@@ -13,20 +13,6 @@ void main() async {
   await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
 
-
-
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
-
-  // SystemChrome.setPreferredOrientations([
-  //   DeviceOrientation.landscapeLeft,
-  //   DeviceOrientation.landscapeRight,
-  // ]);
-
-  // SystemChrome.setEnabledSystemUIMode(
-  //   SystemUiMode.immersiveSticky,
-  // );
   pustLogic();
   Get.put(HomeController()); // Register the homeController as a singleton
   Get.put(PurchaseController());
