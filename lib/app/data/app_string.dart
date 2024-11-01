@@ -33,7 +33,7 @@ class AppStrings {
   static String get classicModeString => _getStringByLanguage('Classic', '经典');
   static String get scoreModeString => _getStringByLanguage('Score', '分数');
   static String get memoryModeString => _getStringByLanguage('Memory', '记忆');
-  static String get gameNameString => _getStringByLanguage('Pot it', 'Pot it');
+  static String get gameNameString => _getStringByLanguage('Pop it', 'Pop it');
   static String get playString => _getStringByLanguage('Play', '游玩');
   static String get backString => _getStringByLanguage('Back', '退出');
   static String get retryString => _getStringByLanguage('Retry', '重试');

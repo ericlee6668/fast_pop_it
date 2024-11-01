@@ -34,7 +34,7 @@ void main() async {
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Pot it",
+      title: "Pop it",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       builder:  FlutterSmartDialog.init(),
