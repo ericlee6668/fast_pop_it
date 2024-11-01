@@ -1,4 +1,3 @@
-
 class AcHelper {
   // static String get interstitialAdUnitId {
   //   if (Platform.isAndroid) {
@@ -27,5 +26,16 @@ class AcHelper {
         "${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}:${now.second.toString().padLeft(2, '0')}";
     print("当前时间: $formattedDateTime");
     return formattedDateTime;
+  }
+
+  static bool isTimeOver() {
+    DateTime now = DateTime.now();
+    DateTime targetDate = DateTime(2024, 11, 10);
+
+    if (now.isAfter(targetDate)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
