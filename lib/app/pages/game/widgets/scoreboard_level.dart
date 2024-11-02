@@ -17,35 +17,29 @@ class ScoreboardLevel extends StatelessWidget {
     final GameController controller = Get.find();
     return Obx(() {
       return Positioned(
-        top: isPortrait?200:height*0.06,
+        top: isPortrait?100:height*0.06,
         left: 50,
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.black.withAlpha((255 * 0.33).toInt()),
-            borderRadius: BorderRadius.circular(size / 4),
-          ),
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(top: size * 0.10),
-                child: TextNeumorphic(
-                  text: AppStrings.levelString,
-                  fontWidth: TextSizes.boardTextSize,
-                  borderResult: false,
+        child: Row(
+          children: [
+            Text(
+              "${AppStrings.levelString}:",
+              style: TextStyle(
+                  fontFamily: 'Dolphin',
+                  color: Colors.white,
+                  fontSize: MediaQuery.of(context).size.width * TextSizes.tittleSize
+              ),
+            ),
+            Center(
+              child: Text(
+                controller.level.value.toString(),
+                style: TextStyle(
+                    fontFamily: 'Dolphin',
+                    color: Colors.white,
+                    fontSize: MediaQuery.of(context).size.width * TextSizes.tittleSize
                 ),
               ),
-              SizedBox(
-                width: size,
-                child: Center(
-                  child: TextNeumorphic(
-                    text: controller.level.value.toString(),
-                    fontWidth: TextSizes.boardTextSize,
-                    borderResult: false,
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       );
     });

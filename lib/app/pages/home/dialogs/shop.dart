@@ -83,10 +83,9 @@ class _ShopState extends State<Shop> {
                 height: 20,
               ),
               CustomThemeGridView(
-                heightSize: heightSize * 0.8,
+                heightSize: heightSize ,
                 widthSize: widthSize,
               ),
-              const Spacer(),
             ],
           ),
         ),

@@ -121,13 +121,20 @@ class AppColors {
       text: const Color(0xFFF1EBC9),
     ),
 
-
     GameTheme(
-      //theme 3
-      background: const Color.fromARGB(255, 243, 179, 192),
-      primary: const Color.fromARGB(255, 192, 99, 146),
-      darkPrimary: const Color.fromARGB(255, 173, 82, 128),
-      secondary: const Color.fromARGB(255, 255, 135, 159),
+      //theme 11
+      background: const Color(0xFF242121),
+      primary: const Color(0xFF424242),
+      darkPrimary: const Color(0xFF424242),
+      secondary: const Color(0xFFFFFFFF),
+      tertiary: const Color(0xFFA9A489),
+      text: const Color(0xFFF1EBC9),
+    ),
+    GameTheme(
+      background: const Color(0xFFE83428),
+      primary: const Color(0xFFE86966),
+      darkPrimary: const Color(0xFFE87698),
+      secondary: const Color(0xFFFFFFFF),
       tertiary: const Color(0xFFA9A489),
       text: const Color(0XFFf1ebc9),
     ),
@@ -148,6 +155,15 @@ class AppColors {
       secondary: const Color(0xFF90CAF9),
       tertiary: const Color(0xFF1565C0),
       text: const Color(0xFFF1EBC9),
+    ),
+    GameTheme(
+      //theme 3
+      background: const Color.fromARGB(255, 243, 179, 192),
+      primary: const Color.fromARGB(255, 192, 99, 146),
+      darkPrimary: const Color.fromARGB(255, 173, 82, 128),
+      secondary: const Color.fromARGB(255, 255, 135, 159),
+      tertiary: const Color(0xFFA9A489),
+      text: const Color(0XFFf1ebc9),
     ),
   ];
 

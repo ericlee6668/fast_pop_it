@@ -1,8 +1,10 @@
 import 'package:animated_background/animated_background.dart';
 import 'package:flame_audio/flame_audio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:pop_it/app/pages/home/views/sc_view.dart';
 import 'package:pop_it/app/pages/home/views/us.dart';
 import '../../../data/app_colors.dart';
 import '../../../data/app_sizes.dart';
@@ -111,6 +113,9 @@ class HomeView extends GetView<HomeController> {
                       child: Settings(),
                     ),
                   );
+                  // Navigator.push(context, CupertinoPageRoute(builder: (context) {
+                  //   return SciFiHomePage();
+                  // }));
                 },
               ),
               Center(

@@ -52,7 +52,7 @@ class GameControl extends StatelessWidget {
         children: [
           Positioned(
             top: (gameControlHeight + aroundSpace) * 0.20,
-            left: (gameControlWidth + aroundSpace) * 0.32,
+            right: ((gameControlWidth + aroundSpace) - ((gameControlWidth + aroundSpace) * 0.35)) - gameControlButtonDetailSize,
             child: CustomPaint(
               size: Size(gameControlButtonDetailSize, gameControlButtonDetailSize),
               painter: GameControlButton(themeColor: AppColors.gameColorsTheme[controller.gameThemeIndex.value].primary),
@@ -60,7 +60,7 @@ class GameControl extends StatelessWidget {
           ),
           Positioned(
             top: (gameControlHeight + aroundSpace) * 0.20,
-            left: ((gameControlWidth + aroundSpace) - ((gameControlWidth + aroundSpace) * 0.32)) - gameControlButtonDetailSize,
+            left: ((gameControlWidth + aroundSpace) - ((gameControlWidth + aroundSpace) * 0.35)) - gameControlButtonDetailSize,
             child: CustomPaint(
               size: Size(gameControlButtonDetailSize, gameControlButtonDetailSize),
               painter: GameControlButton(themeColor: AppColors.gameColorsTheme[controller.gameThemeIndex.value].primary),
@@ -75,7 +75,7 @@ class GameControl extends StatelessWidget {
             child: Image.asset(ShopItem.shopItems[controller.gameThemeIndex.value].iconUrl2,width: popItBodyWidth/2,height: popItBodyWidth/2,fit: BoxFit.contain,),
           ),
           Positioned(
-            bottom: 0,
+            bottom: 5,
             child: CustomPaint(
               painter: GameControlDraw(
                 shadowWidth: borderWidth * 2,

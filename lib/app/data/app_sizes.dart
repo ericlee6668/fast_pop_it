@@ -10,5 +10,4 @@ class TextSizes {
   static const double configBtnsSize = 0.038;
   static const double configInnerSize = 0.025;
 
-  // Adicione mais constantes conforme necessário para os textos do seu aplicativo
 }

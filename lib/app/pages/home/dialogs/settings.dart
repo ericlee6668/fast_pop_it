@@ -24,7 +24,7 @@ class _SettingsState extends State<Settings> {
     super.initState();
   }
 
-  final String _selectedItem =
+   String _selectedItem =
       GetStorage().read(StorageKeys.languageKey) ?? 'English';
   final List<String> _dropdownItems = [
     'English',
@@ -105,89 +105,92 @@ class _SettingsState extends State<Settings> {
                   const Spacer(),
                 ],
               ),
-              // const Spacer(),
-              // Align(
-              //   alignment: Alignment.center,
-              //   child: Column(
-              //     children: [
-              //       Text(
-              //         AppStrings.languageString,
-              //         style: TextStyle(
-              //           fontSize: widthSize * TextSizes.boardTextSize,
-              //           shadows: [
-              //             Shadow(
-              //               offset: const Offset(1, 1),
-              //               blurRadius: 2,
-              //               color: Colors.black.withOpacity(0.5),
-              //             ),
-              //           ],
-              //         ),
-              //       ),
-              //       Container(
-              //         padding: const EdgeInsets.symmetric(horizontal: 10),
-              //         decoration: BoxDecoration(
-              //           border: Border.all(
-              //             color: AppColors
-              //                 .gameColorsTheme[controller.homeThemeIndex.value]
-              //                 .tertiary,
-              //             width: widthSize * 0.0015,
-              //           ),
-              //           borderRadius: BorderRadius.circular(8),
-              //           color: AppColors
-              //               .gameColorsTheme[controller.homeThemeIndex.value]
-              //               .primary,
-              //         ),
-              //         child: DropdownButtonHideUnderline(
-              //           child: DropdownButton<String>(
-              //             value: _selectedItem,
-              //             dropdownColor: AppColors
-              //                 .gameColorsTheme[controller.homeThemeIndex.value]
-              //                 .primary,
-              //             onChanged: (String? newValue) {
-              //               GetStorage()
-              //                   .write(StorageKeys.languageKey, newValue);
-              //               controller.updatePlayName();
-              //               setState(() {
-              //                 _selectedItem = newValue!;
-              //               });
-              //             },
-              //             items: _dropdownItems.map((String item) {
-              //               return DropdownMenuItem<String>(
-              //                 value: item,
-              //                 child: Container(
-              //                   width: widthSize * 0.15,
-              //                   alignment: Alignment.center,
-              //                   child: Text(
-              //                     item,
-              //                     style: TextStyle(
-              //                       fontSize:
-              //                           widthSize * TextSizes.configInnerSize,
-              //                       // fontFamily: 'Cute-Dolphin-Regular',
-              //                       shadows: [
-              //                         Shadow(
-              //                           offset: const Offset(1, 1),
-              //                           blurRadius: 2,
-              //                           color:
-              //                               Colors.black.withOpacity(0.5),
-              //                         ),
-              //                       ],
-              //                     ),
-              //                   ),
-              //                 ),
-              //               );
-              //             }).toList(),
-              //           ),
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
+              const Spacer(),
+              Align(
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    Text(
+                      AppStrings.languageString,
+                      style: TextStyle(
+                        fontSize: widthSize * TextSizes.configTittleSize,
+                        color: Colors.white,
+                        shadows: [
+                          Shadow(
+                            offset: const Offset(1, 1),
+                            blurRadius: 2,
+                            color: Colors.black.withOpacity(0.5),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 10,),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: AppColors
+                              .gameColorsTheme[controller.homeThemeIndex.value]
+                              .tertiary,
+                          width: widthSize * 0.0015,
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                        color: AppColors
+                            .gameColorsTheme[controller.homeThemeIndex.value]
+                            .primary,
+                      ),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton<String>(
+                          value: _selectedItem,
+                          dropdownColor: AppColors
+                              .gameColorsTheme[controller.homeThemeIndex.value]
+                              .tertiary,
+                          onChanged: (String? newValue) {
+                            GetStorage()
+                                .write(StorageKeys.languageKey, newValue);
+                            controller.updatePlayName();
+                            setState(() {
+                              _selectedItem = newValue!;
+                            });
+                          },
+                          items: _dropdownItems.map((String item) {
+                            return DropdownMenuItem<String>(
+                              value: item,
+                              child: Container(
+                                width: widthSize * 0.25,
+                                alignment: Alignment.center,
+                                child: Text(
+                                  item,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize:
+                                        20,
+                                    // fontFamily: 'Cute-Dolphin-Regular',
+                                    shadows: [
+                                      Shadow(
+                                        offset: const Offset(1, 1),
+                                        blurRadius: 2,
+                                        color:
+                                            Colors.white.withOpacity(0.5),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               const Spacer(),
               Align(
                 alignment: Alignment.bottomCenter,
                 child: ButtonNeumorphic(
                   width: 0.2,
-                  height: 0.08,
+                  height: 0.06,
                   onPressedCallback: () {
                     Get.back();
                   },

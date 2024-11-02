@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,12 +7,15 @@ import '../pages/home/controllers/home_controller.dart';
 class ShopCard extends StatelessWidget {
   final double height;
   final double width;
-  final String iconUrl; // Ícone obrigatório
-  final String? optionalIconUrl; // Ícone opcional
+  final String iconUrl;
+  final String? optionalIconUrl;
   final String cardText;
   final num cardTextSize;
+  final int index;
 
-  const ShopCard({super.key,
+  const ShopCard({
+    super.key,
+    required this.index,
     required this.height,
     required this.width,
     required this.iconUrl,
@@ -29,8 +31,7 @@ class ShopCard extends StatelessWidget {
       height: height,
       width: width,
       decoration: BoxDecoration(
-        color: AppColors
-            .gameColorsTheme[controller.homeThemeIndex.value].background,
+        color: AppColors.gameColorsTheme[index].background,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
@@ -47,51 +48,36 @@ class ShopCard extends StatelessWidget {
       ),
       child: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-          return Column(
+          return Row(
             children: [
-              const Spacer(),
               Image.asset(
                 iconUrl,
-                height: constraints.maxHeight * 0.7,
-                width: constraints.maxWidth * 0.7,
+                height: constraints.maxHeight * 0.8,
+                width: constraints.maxWidth * 0.6,
               ),
-              const Spacer(),
               Container(
-                alignment: Alignment.center,
-                height: constraints.maxHeight * 0.25,
-                width: constraints.maxWidth,
-                color: AppColors
-                    .gameColorsTheme[controller.homeThemeIndex.value]
-                    .darkPrimary,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    if (optionalIconUrl != null)
-                      Image.asset(
-                        optionalIconUrl!,
-                        height: constraints.maxHeight * 0.2 * 0.8,
-                      ),
-                    if (optionalIconUrl != null) const SizedBox(width: 8),
-                    Text(
-                      cardText,
-                      style: TextStyle(
-                        // fontFamily: 'Cute-Dolphin-Regular',
-                        fontSize: constraints.maxHeight * 0.2,
-                        color: AppColors
-                            .gameColorsTheme[controller.homeThemeIndex.value]
-                            .text,
-                        shadows: [
-                          Shadow(
-                            offset: const Offset(2, 2),
-                            blurRadius: 4,
-                            color: Colors.black.withOpacity(0.1),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              )
+                width: 100,
+                margin: const EdgeInsets.only(right: 10),
+                decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(20)),
+                child: Text(cardText,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      // fontFamily: 'Cute-Dolphin-Regular',
+                      fontSize: constraints.maxHeight * 0.2,
+                      color: AppColors
+                          .gameColorsTheme[controller.homeThemeIndex.value]
+                          .text,
+                      shadows: [
+                        Shadow(
+                          offset: const Offset(2, 2),
+                          blurRadius: 4,
+                          color: Colors.black.withOpacity(0.1),
+                        ),
+                      ],
+                    )),
+              ),
             ],
           );
         },

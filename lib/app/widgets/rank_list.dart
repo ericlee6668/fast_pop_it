@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pop_it/app/widgets/text_neumorphic.dart';
 
-
 import '../data/app_colors.dart';
 import '../data/app_sizes.dart';
 import '../data/app_string.dart';
@@ -14,7 +13,7 @@ import 'custo_elevated_button.dart';
 
 class RankListIcon extends StatelessWidget {
   final PurchaseController purchaseController = Get.find();
-  final HomeController controller = Get.find();
+  final HomeController homeController = Get.find();
 
   String codeSt = '';
 
@@ -42,11 +41,14 @@ class RankListIcon extends StatelessWidget {
             builder: (BuildContext context) {
               Get.put(RankController());
               return AlertDialog(
-                insetPadding: const EdgeInsets.symmetric(vertical: 20,horizontal: 30),
+                insetPadding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
                 backgroundColor: AppColors
-                    .gameColorsTheme[controller.homeThemeIndex.value].primary,
+                    .gameColorsTheme[homeController.homeThemeIndex.value]
+                    .primary,
                 content: SizedBox(
-                  width: 1400,
+                  width: MediaQuery.of(context).size.width*0.9,
+                  height: MediaQuery.of(context).size.height/2,
                   child: Column(
                     children: [
                       TextNeumorphic(
@@ -54,59 +56,119 @@ class RankListIcon extends StatelessWidget {
                         fontWidth: TextSizes.subTittleMenuSize,
                         borderResult: false,
                       ),
-                      Row(
-                        mainAxisAlignment:
-                        MainAxisAlignment.spaceAround,
-                        children: [
-                          TextNeumorphic(
-                            text: AppStrings.rankingString,
-                            fontWidth: TextSizes.configInnerSize,
-                            borderResult: false,
-                          ),
-                          TextNeumorphic(
-                            text: AppStrings.scoreString,
-                            fontWidth: TextSizes.configInnerSize,
-                            borderResult: false,
-                          ),
-                          TextNeumorphic(
-                            text: AppStrings.dateString,
-                            fontWidth: TextSizes.configInnerSize,
-                            borderResult: false,
-                          ),
-                        ],
-                      ),
+                      // Row(
+                      //   mainAxisAlignment:
+                      //   MainAxisAlignment.spaceAround,
+                      //   children: [
+                      //     TextNeumorphic(
+                      //       text: AppStrings.rankingString,
+                      //       fontWidth: TextSizes.configInnerSize,
+                      //       borderResult: false,
+                      //     ),
+                      //     TextNeumorphic(
+                      //       text: AppStrings.scoreString,
+                      //       fontWidth: TextSizes.configInnerSize,
+                      //       borderResult: false,
+                      //     ),
+                      //     TextNeumorphic(
+                      //       text: AppStrings.dateString,
+                      //       fontWidth: TextSizes.configInnerSize,
+                      //       borderResult: false,
+                      //     ),
+                      //   ],
+                      // ),
                       GetBuilder<RankController>(builder: (controller) {
-                        return SizedBox(
-                          height: 140,
-                          width: 700,
-                          child: ListView.builder(
+                        return Expanded(
+                          child: ListView.separated(
                             itemCount: controller.rankList.length,
                             padding: EdgeInsets.zero,
+                            shrinkWrap: true,
                             itemBuilder: (BuildContext context, int index) {
-                              return Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                              return Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const SizedBox(width: 10,),
-                                  TextNeumorphic(
-                                    text: (index + 1).toString(),
-                                    fontWidth: TextSizes.configInnerSize,
-                                    borderResult: false,
+                                  const SizedBox(
+                                    width: 10,
                                   ),
-                                  const SizedBox(width: 20,),
-                                  TextNeumorphic(
-                                    text: controller.rankList[index].score
-                                        .toString(),
-                                    fontWidth: TextSizes.configInnerSize,
-                                    borderResult: false,
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Text(
+                                            "${AppStrings.rankingString}:",
+                                            style:  TextStyle(
+                                                color: AppColors
+                                                    .gameColorsTheme[
+                                                homeController
+                                                    .homeThemeIndex
+                                                    .value]
+                                                    .text,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20),
+                                          ),
+                                          TextNeumorphic(
+                                            text: (index + 1).toString(),
+                                            fontWidth:
+                                                TextSizes.configInnerSize,
+                                            borderResult: false,
+                                          ),
+                                        ],
+                                      ),
+                                      const Spacer(),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            "${AppStrings.scoreString}:",
+                                            style: TextStyle(
+                                                color: AppColors
+                                                    .gameColorsTheme[
+                                                        homeController
+                                                            .homeThemeIndex
+                                                            .value]
+                                                    .text,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20),
+                                          ),
+                                          TextNeumorphic(
+                                            text: controller
+                                                .rankList[index].score
+                                                .toString(),
+                                            fontWidth: TextSizes.bntMenuSize,
+                                            borderResult: false,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
                                   ),
-                                  TextNeumorphic(
-                                    text: controller.rankList[index].date
-                                        .toString(),
-                                    fontWidth: TextSizes.configInnerSize,
-                                    borderResult: false,
+                                  Row(
+                                    children: [
+                                      Text(
+                                        "${AppStrings.dateString}:",
+                                        style: TextStyle(
+                                            color: AppColors
+                                                .gameColorsTheme[homeController
+                                                    .homeThemeIndex.value]
+                                                .text,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20),
+                                      ),
+                                      TextNeumorphic(
+                                        text: controller.rankList[index].date
+                                            .toString(),
+                                        fontWidth: TextSizes.configInnerSize,
+                                        borderResult: false,
+                                      ),
+                                    ],
                                   ),
                                 ],
+                              );
+                            },
+                            separatorBuilder:
+                                (BuildContext context, int index) {
+                              return const SizedBox(
+                                height: 20,
                               );
                             },
                           ),
@@ -202,12 +264,14 @@ class RankListIcon extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(22),
               color: AppColors
-                  .gameColorsTheme[controller.homeThemeIndex.value].secondary,
+                  .gameColorsTheme[homeController.homeThemeIndex.value]
+                  .secondary,
             ),
             child: Icon(
               Icons.date_range_outlined,
               color: HSLColor.fromColor(AppColors
-                      .gameColorsTheme[controller.homeThemeIndex.value].primary)
+                      .gameColorsTheme[homeController.homeThemeIndex.value]
+                      .primary)
                   .withLightness(0.43)
                   .toColor(),
               size: 26,

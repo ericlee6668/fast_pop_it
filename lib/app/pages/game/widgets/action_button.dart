@@ -6,19 +6,21 @@ import '../controllers/game_controller.dart';
 
 class ActionButton extends StatelessWidget {
   double size;
-  double top;
+  double? top;
   double? left;
   double? right;
+  double? bottom;
   IconData icon;
   Function onTap;
 
   ActionButton({
     super.key,
     required this.size,
-    required this.top,
+     this.top,
     required this.icon,
     this.left,
     this.right,
+    this.bottom,
     required this.onTap,
   });
 
@@ -29,6 +31,7 @@ class ActionButton extends StatelessWidget {
       top: top,
       left: left,
       right: right,
+      bottom: bottom,
       child: GetBuilder<GameController>(builder: (context) {
         return GestureDetector(
           onTap: () {

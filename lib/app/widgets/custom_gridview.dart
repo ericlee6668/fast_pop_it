@@ -23,44 +23,49 @@ class CustomThemeGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     final HomeController controller = Get.find();
     return GetBuilder<HomeController>(builder: (_) {
-      return Container(
-        alignment: Alignment.center,
+      return Expanded(
         child: ListView.separated(
-            itemCount: ShopItem.shopItems.length,
-            shrinkWrap: true,
-            itemBuilder: (context, itemIndex) {
-              return GestureDetector(
-                onTap: () {
-                  if (!ShopItem.shopItems[itemIndex].isItemPurchased) {
-                    // 如果该商品尚未购买，则显示购买弹出窗口
-                    showPurchaseDialog(context, controller, itemIndex);
-                  } else {
-                    // 取消选择所有其他项目
-                    for (var item in ShopItem.shopItems) {
-                      if (item.isItemPurchased &&
-                          item != ShopItem.shopItems[itemIndex]) {
-                        ShopItem.shopItems[itemIndex].setSelected();
-                      }
+          itemCount: ShopItem.shopItems.length,
+          shrinkWrap: true,
+          itemBuilder: (context, itemIndex) {
+            return GestureDetector(
+              onTap: () {
+                if (!ShopItem.shopItems[itemIndex].isItemPurchased) {
+                  // 如果该商品尚未购买，则显示购买弹出窗口
+                  showPurchaseDialog(context, controller, itemIndex);
+                } else {
+                  // 取消选择所有其他项目
+                  for (var item in ShopItem.shopItems) {
+                    if (item.isItemPurchased &&
+                        item != ShopItem.shopItems[itemIndex]) {
+                      ShopItem.shopItems[itemIndex].setSelected();
                     }
-                    ShopItem.shopItems[itemIndex].setSelected();
-                    controller.update();
-                    print("onTap()=>$itemIndex");
                   }
-                },
-                child: ShopItem.shopItems[itemIndex].showView == true
-                    ? ShopCard(
-                        height: 120,
-                        width: widthSize * 0.15,
-                        cardTextSize: 0.2,
-                        iconUrl: ShopItem.shopItems[itemIndex].iconUrl2,
-                        cardText: ShopItem.shopItems[itemIndex].cardText,
-                      )
-                    : Container(height: 10,),
-              );
-            }, separatorBuilder: (BuildContext context, int index) {
-              return const SizedBox(height: 10,);
-        },),
-        // child: ListView.b,
+                  ShopItem.shopItems[itemIndex].setSelected();
+                  controller.update();
+                  print("onTap()=>$itemIndex");
+                }
+              },
+              child: ShopItem.shopItems[itemIndex].showView == true
+                  ? ShopCard(
+                      index: itemIndex,
+                      height: 120,
+                      width: 45,
+                      cardTextSize: 0.2,
+                      iconUrl: ShopItem.shopItems[itemIndex].iconUrl2,
+                      cardText: ShopItem.shopItems[itemIndex].cardText,
+                    )
+                  : Container(
+                      height: 20,
+                    ),
+            );
+          },
+          separatorBuilder: (BuildContext context, int index) {
+            return const SizedBox(
+              height: 10,
+            );
+          },
+        ),
       );
     });
 
@@ -159,12 +164,12 @@ class CustomThemeGridView extends StatelessWidget {
             backgroundColor: AppColors
                 .gameColorsTheme[controller.homeThemeIndex.value].primary,
             content: SizedBox(
-              height: heightSize * allDialogSize,
+              height: heightSize * 0.3,
               width: widthSize * allDialogSize,
               child: Image.asset(
                 ShopItem.shopItems[itemIndex].iconUrl2,
                 width: widthSize * allDialogSize * 0.5,
-                height: heightSize * allDialogSize * 0.5,
+                height: heightSize * allDialogSize * 0.25,
               ),
             ),
             actions: <Widget>[
@@ -173,8 +178,8 @@ class CustomThemeGridView extends StatelessWidget {
                     onPressedCallback: () {
                       ShopItem.shopItems[itemIndex].purchaseItem(context);
                     },
-                    text: ShopItem.shopItems[itemIndex].itemCoinPrice
-                        .toString(),
+                    text:
+                        ShopItem.shopItems[itemIndex].itemCoinPrice.toString(),
                     showImage: true),
               ),
             ],

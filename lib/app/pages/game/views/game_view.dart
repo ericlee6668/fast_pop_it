@@ -13,6 +13,7 @@ import '../widgets/game_control.dart';
 import '../widgets/game_over.dart';
 import '../widgets/go_back_home.dart';
 import '../widgets/restart_game.dart';
+import '../widgets/scoreboard_best.dart';
 import '../widgets/scoreboard_level.dart';
 import '../widgets/scoreboard_score.dart';
 import '../widgets/vibration_animation.dart';
@@ -38,7 +39,7 @@ class GameView extends GetView<GameController> {
             baseColor: Colors.white,
             minOpacity: 0.05,
             maxOpacity: 0.25,
-            particleCount: 50,
+            particleCount: 0,
             spawnMinSpeed: 50,
             spawnMaxSpeed: 100,
           ),
@@ -46,31 +47,29 @@ class GameView extends GetView<GameController> {
         vsync: controller,
         child: Stack(
           children: [
-            Center(
-              child: Stack(
-                children: [
-                  VibrationAnimationPage(
-                    controller: controller.controlAnimationController,
-                    child: Obx(
-                      () => IgnorePointer(
-                        ignoring: controller.gameOver.value,
-                        child: GameControl(
-                          onSized: (size) {},
-                          margin: 20,
-                          controller: controller,
-                          screenHeight:
-                              controller.controller.isPortrait(context)
-                                  ? Get.width
-                                  : Get.height,
-                        ),
-                      ),
+            Container(
+              alignment: Alignment.bottomCenter,
+              padding:  const EdgeInsets.only(bottom: 200),
+              child: VibrationAnimationPage(
+                controller: controller.controlAnimationController,
+                child: Obx(
+                  () => IgnorePointer(
+                    ignoring: controller.gameOver.value,
+                    child: GameControl(
+                      onSized: (size) {},
+                      margin: 24,
+                      controller: controller,
+                      screenHeight:
+                          controller.controller.isPortrait(context)
+                              ? Get.width
+                              : Get.height,
                     ),
                   ),
-
-                ],
+                ),
               ),
             ),
             ScoreboardLevel(margin: 20),
+            Visibility(visible:false,child: ScoreboardBest(margin: 20)),
             ScoreboardScore(margin: 20),
             GameOver(),
             RestartGame(),
@@ -81,12 +80,12 @@ class GameView extends GetView<GameController> {
               child: ExplosionWidget(
                 canTap: true,
                 child: Container(
-                    width: 220, height: 120, color: Colors.transparent),
+                    width: 220, height: 220, color: Colors.transparent),
               ),
             ),
             ActionButton(
               left: actionButtonSpace,
-              top: actionButtonSpaceTop,
+              bottom: actionButtonSpaceTop,
               size: actionButtonSize,
               icon: Icons.arrow_back,
               onTap: () {
@@ -95,10 +94,30 @@ class GameView extends GetView<GameController> {
               },
             ),
             ActionButton(
-              icon: Icons.volume_up_outlined,
+              icon: Icons.refresh,
               size: actionButtonSize,
               left: (actionButtonSpace * 2) + actionButtonSize,
-              top: actionButtonSpaceTop,
+              bottom: actionButtonSpaceTop,
+              onTap: () {
+                controller.pause();
+                controller.restartGame.value = true;
+              },
+            ),
+            ActionButton(
+              icon: Icons.home_outlined,
+              size: actionButtonSize,
+              right: actionButtonSpace,
+              bottom: actionButtonSpaceTop,
+              onTap: () {
+                controller.pause();
+                controller.goBackHome.value = true;
+              },
+            ),
+            ActionButton(
+              icon: Icons.volume_up_outlined,
+              size: actionButtonSize,
+              right: (actionButtonSpace * 2) + actionButtonSize,
+              bottom: actionButtonSpaceTop,
               onTap: () {
                 Get.dialog(
                   const Dialog(
@@ -106,26 +125,7 @@ class GameView extends GetView<GameController> {
                     child: Settings(),
                   ),
                 );
-              },
-            ),
-            ActionButton(
-              icon: Icons.home_outlined,
-              size: actionButtonSize,
-              right: actionButtonSpace,
-              top: actionButtonSpaceTop,
-              onTap: () {
-                controller.pause();
-                controller.goBackHome.value = true;
-              },
-            ),
-            ActionButton(
-              icon: Icons.refresh,
-              size: actionButtonSize,
-              right: (actionButtonSpace * 2) + actionButtonSize,
-              top: actionButtonSpaceTop,
-              onTap: () {
-                controller.pause();
-                controller.restartGame.value = true;
+
               },
             ),
           ],

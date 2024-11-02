@@ -6,8 +6,8 @@ import '../../../data/app_string.dart';
 import '../../../widgets/text_neumorphic.dart';
 import '../controllers/game_controller.dart';
 
-class ScoreboardScore extends StatelessWidget {
-  ScoreboardScore({super.key, required this.margin});
+class ScoreboardBest extends StatelessWidget {
+  ScoreboardBest({super.key, required this.margin});
   double margin;
 
   @override
@@ -21,49 +21,54 @@ class ScoreboardScore extends StatelessWidget {
     double fontSize = size * 0.45;
     double textPadding = size * 0.10;
     return Positioned(
-      top: isPortrait?100:height*0.06,
-      right: 50,
-      child: SizedBox(
-        child: Stack(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+      top: isPortrait?200:height*0.06,
+      right: 0,
+      left: 0,
+      child: Stack(
+        children: [
+          Container(
+            width: size,
+            decoration: BoxDecoration(
+              color: Colors.black.withAlpha((255 * 0.33).toInt()),
+              borderRadius: BorderRadius.circular(size / 4),
+            ),
+            child: Column(
               children: [
-                Text(
-                   "${AppStrings.scoreString}:",
-                  style: TextStyle(
-                    fontFamily: 'Dolphin',
-                    color: Colors.white,
-                    fontSize: MediaQuery.of(context).size.width * TextSizes.tittleSize
+                Padding(
+                  padding: EdgeInsets.only(top: size * 0.10),
+                  child: TextNeumorphic(
+                    text: AppStrings.scoreString,
+                    fontWidth: TextSizes.boardTextSize,
+                    borderResult: false,
                   ),
                 ),
-                const SizedBox(width: 10,),
                 Obx(() {
                   if (controller.score.value.toString().length > 3) {
                     fontSize = size * 0.8;
                     textPadding = size * 0.15;
                   }
-                  return Text(
-                    controller.score.value.toString(),
-                    style: TextStyle(
-                        fontFamily: 'Dolphin',
-                        color: Colors.white,
-                        fontSize: MediaQuery.of(context).size.width * TextSizes.tittleSize
+                  return SizedBox(
+                    width: size,
+                    child: Center(
+                      child: TextNeumorphic(
+                        text: controller.score.value.toString(),
+                        fontWidth: TextSizes.boardTextSize,
+                        borderResult: false,
+                      ),
                     ),
                   );
-
                 }),
               ],
             ),
-            //Positioned(top: size + (size / 5), child: Spacer()),
-            Obx(() {
-              print("added ${controller.scoreAnimations.length}");
-              return Stack(
-                children: [...controller.scoreAnimations],
-              );
-            })
-          ],
-        ),
+          ),
+          //Positioned(top: size + (size / 5), child: Spacer()),
+          Obx(() {
+            print("added ${controller.scoreAnimations.length}");
+            return Stack(
+              children: [...controller.scoreAnimations],
+            );
+          })
+        ],
       ),
     );
   }
