@@ -50,4 +50,6 @@ class AppStrings {
   static String get rankString => _getStringByLanguage('rank', '排行榜');
   static String get dateString => _getStringByLanguage('date', '日期');
   static String get rankingString => _getStringByLanguage('ranking', '排名');
+  static String get skinString => _getStringByLanguage('skin', '皮肤');
+  static String get aboutString => _getStringByLanguage('About us', '关于我们');
 }

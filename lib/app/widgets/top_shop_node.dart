@@ -21,7 +21,7 @@ class TopShopNode extends StatelessWidget {
     final HomeController controller = Get.find();
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.065,
-      width: 100,
+      width:  MediaQuery.of(context).size.width*0.3,
       child: Container(
         height: MediaQuery.of(context).size.height * 0.07,
         width: MediaQuery.of(context).size.width * 0.3,
@@ -55,8 +55,8 @@ class TopShopNode extends StatelessWidget {
             ),
             Text(
               '$currencyValue',
-              style: const TextStyle(
-                fontSize: 16,
+              style:  TextStyle(
+                fontSize: MediaQuery.of(context).size.width*0.03,
                 color: Colors.white,
                 fontWeight: FontWeight.w500,
               ),

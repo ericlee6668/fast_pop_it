@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 
@@ -35,7 +36,7 @@ class GameOver extends StatelessWidget {
               ),
               child: Container(
                 width: controller.controller.isPortrait(context)
-                    ? MediaQuery.of(context).size.height * 0.255
+                    ? MediaQuery.of(context).size.height * 0.265
                     : MediaQuery.of(context).size.width * 0.255,
                 decoration: BoxDecoration(
                   color: Colors.black.withAlpha((255 * 0.50).toInt()),
@@ -100,7 +101,7 @@ class GameOver extends StatelessWidget {
                           controller.startGame();
                         },
                         child: Container(
-                          height: 40,
+                          height: 30.h,
                           width: double.infinity,
                           decoration: BoxDecoration(
                             color: AppColors
@@ -133,7 +134,7 @@ class GameOver extends StatelessWidget {
                           Get.back();
                         },
                         child: Container(
-                          height: 40,
+                          height: 30.h,
                           width: double.infinity,
                           decoration: BoxDecoration(
                             color: AppColors

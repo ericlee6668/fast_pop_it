@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'app/base/base_bview.dart';
@@ -32,12 +33,19 @@ void main() async {
   Get.put(PurchaseController());
 
   runApp(
-    GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Pop it",
-      initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes,
-      builder:  FlutterSmartDialog.init(),
+    ScreenUtilInit(
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_ , child){
+        return  GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: "Pop it",
+          initialRoute: AppPages.INITIAL,
+          getPages: AppPages.routes,
+          builder:  FlutterSmartDialog.init(),
+        );
+      },
     ),
   );
 }

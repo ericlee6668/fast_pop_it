@@ -26,7 +26,7 @@ class ScoreboardLevel extends StatelessWidget {
               style: TextStyle(
                   fontFamily: 'Dolphin',
                   color: Colors.white,
-                  fontSize: MediaQuery.of(context).size.width * TextSizes.tittleSize
+                  fontSize: MediaQuery.of(context).size.width * TextSizes.levelScoreSize
               ),
             ),
             Center(
@@ -35,7 +35,7 @@ class ScoreboardLevel extends StatelessWidget {
                 style: TextStyle(
                     fontFamily: 'Dolphin',
                     color: Colors.white,
-                    fontSize: MediaQuery.of(context).size.width * TextSizes.tittleSize
+                    fontSize: MediaQuery.of(context).size.width * TextSizes.levelScoreSize
                 ),
               ),
             ),

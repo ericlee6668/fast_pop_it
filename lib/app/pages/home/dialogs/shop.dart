@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 
 import '../../../data/app_colors.dart';
+import '../../../data/app_string.dart';
 import '../../../data/asset_strings.dart';
 import '../../../widgets/custom_gridview.dart';
 import '../../../widgets/top_shop_node.dart';
@@ -44,6 +46,7 @@ class _ShopState extends State<Shop> {
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(
                 height: 20,
@@ -51,14 +54,15 @@ class _ShopState extends State<Shop> {
               Align(
                 alignment: Alignment.topLeft,
                 child: GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Get.back();
                   },
-                  child:const Padding(
-                    padding:  EdgeInsets.only(left: 8.0),
-                    child:  Icon(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Icon(
                       Icons.close,
                       color: Colors.white,
+                      size: 16.w,
                     ),
                   ),
                 ),
@@ -67,7 +71,7 @@ class _ShopState extends State<Shop> {
                 alignment: Alignment.topRight,
                 child: Padding(
                   padding: const EdgeInsets.only(
-                    right: 10,
+                    right: 20,
                   ),
                   child: TopShopNode(
                     currencyIcon: AssetStrings.popCoinImage,
@@ -75,17 +79,57 @@ class _ShopState extends State<Shop> {
                   ),
                 ),
               ),
-              const Text(
-                'Charactor',
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              CustomThemeGridView(
-                heightSize: heightSize ,
-                widthSize: widthSize,
-              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      // Padding(
+                      //   padding: EdgeInsets.only(left: 8.w),
+                      //   child: Text(
+                      //     'theme',
+                      //     style:
+                      //         TextStyle(color: Colors.white, fontSize: 18.sp),
+                      //   ),
+                      // ),
+                      // const SizedBox(
+                      //   height: 20,
+                      // ),
+                      // CheckboxListTile(
+                      //   activeColor: Colors.red,
+                      //     title: Text(
+                      //       'theme1',
+                      //       style:
+                      //           TextStyle(color: Colors.white, fontSize: 12.sp),
+                      //     ),
+                      //     value: true,
+                      //     onChanged: (bool) {}),
+                      // CheckboxListTile(
+                      //     title: Text(
+                      //       'theme2',
+                      //       style:
+                      //           TextStyle(color: Colors.white, fontSize: 12.sp),
+                      //     ),
+                      //     value: false,
+                      //     onChanged: (bool) {}),
+                      Padding(
+                        padding: EdgeInsets.only(left: 8.w),
+                        child: Text(
+                          AppStrings.skinString,
+                          style:
+                              TextStyle(color: Colors.white, fontSize: 18.sp),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CustomThemeGridView(
+                        heightSize: heightSize,
+                        widthSize: widthSize,
+                      ),
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
         ),

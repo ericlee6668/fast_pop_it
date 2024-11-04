@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  // static List<GameTheme> gameColorsTheme = [
+  // static List<GameTheme> gameColorsTheme2 = [
   //   GameTheme(
   //     //theme 1
   //     background: const Color(0xFF0D47A1),
@@ -113,6 +113,16 @@ class AppColors {
   static List<GameTheme> gameColorsTheme = [
     GameTheme(
       //theme 1
+      background: const Color(0xFF1A0E57),
+      primary: const Color(0xFF2F1C93),
+      darkPrimary: const Color(0xFF1A0E57),
+      secondary: const Color(0xFFFFFFFF),
+      tertiary: const Color(0xFF2F1C93),
+      text: const Color(0xFFF1EBC9),
+    ),
+
+    GameTheme(
+      //theme 1
       background: const Color(0xFF7E66FF),
       primary: const Color(0xFF714EFF),
       darkPrimary: const Color(0xFF714EFF),
@@ -139,7 +149,7 @@ class AppColors {
       text: const Color(0XFFf1ebc9),
     ),
     GameTheme(
-      background: const Color(0xFFB2DFDB),
+      background: const Color(0xFF00897B),
       primary: const Color(0xFF00897B),
       darkPrimary: const Color(0xFF00695C),
       secondary: const Color(0xFF4DB6AC),

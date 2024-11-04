@@ -1,5 +1,6 @@
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pop_it/app/widgets/text_neumorphic.dart';
 
@@ -16,7 +17,7 @@ class RankListIcon extends StatelessWidget {
   final HomeController homeController = Get.find();
 
   String codeSt = '';
-
+  final double size;
   final double? top;
   final double? right;
   Color? elementColor;
@@ -25,6 +26,7 @@ class RankListIcon extends StatelessWidget {
     super.key,
     this.top,
     this.right,
+    required this.size,
     this.elementColor,
   });
 
@@ -108,10 +110,12 @@ class RankListIcon extends StatelessWidget {
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 20),
                                           ),
+                                          const SizedBox(width: 20,),
                                           TextNeumorphic(
                                             text: (index + 1).toString(),
                                             fontWidth:
                                                 TextSizes.configInnerSize,
+                                            textColor: Colors.red,
                                             borderResult: false,
                                           ),
                                         ],
@@ -259,23 +263,24 @@ class RankListIcon extends StatelessWidget {
           );
         },
         child: Container(
-            width: 42,
-            height: 42,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(22),
+            width: size,
+            height: size,
+            decoration: homeController.homeThemeIndex.value!=0?BoxDecoration(
+              borderRadius: BorderRadius.circular(size),
               color: AppColors
                   .gameColorsTheme[homeController.homeThemeIndex.value]
                   .secondary,
-            ),
-            child: Icon(
+            ):null,
+            child: homeController.homeThemeIndex.value!=0?Icon(
               Icons.date_range_outlined,
               color: HSLColor.fromColor(AppColors
                       .gameColorsTheme[homeController.homeThemeIndex.value]
                       .primary)
                   .withLightness(0.43)
                   .toColor(),
-              size: 26,
-            )),
+              size: size/2,
+            ):Image.asset('assets/btn_record.png')
+        ),
       ),
     );
   }

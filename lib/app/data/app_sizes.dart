@@ -9,5 +9,6 @@ class TextSizes {
   static const double configTittleSize = 0.05;
   static const double configBtnsSize = 0.038;
   static const double configInnerSize = 0.025;
+  static const double levelScoreSize = 0.08;
 
 }

@@ -33,8 +33,8 @@ class RestartGame extends StatelessWidget {
               ),
               child: Container(
                 width: controller.controller.isPortrait(context)
-                    ? MediaQuery.of(context).size.width * 0.8
-                    : MediaQuery.of(context).size.width * 0.455,
+                    ? MediaQuery.of(context).size.height * 0.365
+                    : MediaQuery.of(context).size.width * 0.255,
                 decoration: BoxDecoration(
                   color: Colors.black.withAlpha((255 * 0.50).toInt()),
                   borderRadius: BorderRadius.circular(30),
@@ -67,7 +67,7 @@ class RestartGame extends StatelessWidget {
                           controller.startGame();
                         },
                         child: Container(
-                          height: 40,
+                          height: 45,
                           width: double.infinity,
                           decoration: BoxDecoration(
                             color: AppColors
@@ -101,7 +101,7 @@ class RestartGame extends StatelessWidget {
                           controller.resume();
                         },
                         child: Container(
-                          height: 40,
+                          height: 45,
                           width: double.infinity,
                           decoration: BoxDecoration(
                             color: AppColors

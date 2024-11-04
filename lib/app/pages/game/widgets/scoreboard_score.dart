@@ -34,7 +34,7 @@ class ScoreboardScore extends StatelessWidget {
                   style: TextStyle(
                     fontFamily: 'Dolphin',
                     color: Colors.white,
-                    fontSize: MediaQuery.of(context).size.width * TextSizes.tittleSize
+                    fontSize: MediaQuery.of(context).size.width * TextSizes.levelScoreSize
                   ),
                 ),
                 const SizedBox(width: 10,),
@@ -48,7 +48,7 @@ class ScoreboardScore extends StatelessWidget {
                     style: TextStyle(
                         fontFamily: 'Dolphin',
                         color: Colors.white,
-                        fontSize: MediaQuery.of(context).size.width * TextSizes.tittleSize
+                        fontSize: MediaQuery.of(context).size.width * TextSizes.levelScoreSize
                     ),
                   );
 

@@ -119,7 +119,7 @@ class Particle {
 
   Particle(this.position)
       : color = Colors.primaries[Random().nextInt(Colors.primaries.length)],
-        size = Random().nextDouble() * 5 + 1,
+        size = Random().nextDouble() * 10 + 1,
         speed = Random().nextDouble() * 2 + 2,
         direction = Random().nextDouble() * 2 * pi;
 

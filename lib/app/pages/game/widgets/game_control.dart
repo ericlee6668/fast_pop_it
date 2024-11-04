@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../data/app_colors.dart';
 import '../../../widgets/shop_items.dart';
@@ -9,9 +10,15 @@ import '../drawings/game_control_button.dart';
 import '../drawings/game_control_draw.dart';
 import 'game_bar_timer.dart';
 import 'game_button.dart';
+import 'game_button_new.dart';
 
 class GameControl extends StatelessWidget {
-  GameControl({super.key, required this.controller, required this.screenHeight, required this.margin, required this.onSized});
+  GameControl(
+      {super.key,
+      required this.controller,
+      required this.screenHeight,
+      required this.margin,
+      required this.onSized});
 
   GameController controller;
   double screenHeight;
@@ -22,26 +29,37 @@ class GameControl extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = screenHeight;
     double topMargin = margin;
-    double gameIconSize = (screenHeight - topMargin) * 0.22;
+    double gameIconSize = (screenHeight ) * 0.24;
     double aroundSpace = gameIconSize;
     double gameControlHeight = height - topMargin - gameIconSize;
-    double popItBodyHeight = gameControlHeight - ((gameControlHeight / 100) * 22); //this container height is behind the real sized container
-    double borderWidth = (popItBodyHeight / 100) * 1.8; //border may have 1.7 percent of popItBodyHeight
-    double borderButtonWidth = (popItBodyHeight / 100) * 1.5; //border may have 1.7 percent of popItBodyHeight
+    double popItBodyHeight = gameControlHeight -
+        ((gameControlHeight / 100) *
+            22); //this container height is behind the real sized container
+    double borderWidth = (popItBodyHeight / 100) *
+        1.8; //border may have 1.7 percent of popItBodyHeight
+    double borderButtonWidth = (popItBodyHeight / 100) *
+        1.5; //border may have 1.7 percent of popItBodyHeight
     double popItBodyHeightReal = popItBodyHeight - (borderWidth - 2);
     double buttonSize = (popItBodyHeight / 3);
-    double buttonsRowTopDistance = (sqrt(pow((buttonSize / 2), 2) + pow((buttonSize), 2))) - (buttonSize / 4);
-    double buttonSized = (((buttonSize - buttonsRowTopDistance) * 2) / 3) + buttonSize; //the real button size
-    buttonsRowTopDistance = (sqrt(pow((buttonSized / 2), 2) + pow((buttonSized), 2))) - (buttonSized / 4);
+    double buttonsRowTopDistance =
+        (sqrt(pow((buttonSize / 2), 2) + pow((buttonSize), 2))) -
+            (buttonSize / 4);
+    double buttonSized = (((buttonSize - buttonsRowTopDistance) * 2) / 3) +
+        buttonSize; //the real button size
+    buttonsRowTopDistance =
+        (sqrt(pow((buttonSized / 2), 2) + pow((buttonSized), 2))) -
+            (buttonSized / 4);
     double popItBodyWidth = buttonSized * 4;
     double popItBodyWidthReal = popItBodyWidth;
     double gameControlWidth = (popItBodyWidth + ((popItBodyWidth / 100) * 22));
     double timeBarHeight = (gameControlHeight - popItBodyHeightReal) / 4;
     double timeBarWidth = (gameControlHeight / 3) * 1.7;
-    double timeBarMargin = ((((gameControlHeight - popItBodyHeightReal) / 2) - timeBarHeight) / 2);
+    double timeBarMargin =
+        ((((gameControlHeight - popItBodyHeightReal) / 2) - timeBarHeight) / 2);
     double gameControlButtonDetailSize = gameControlWidth * 0.065;
 
-    onSized(Size(gameControlWidth + aroundSpace, gameControlHeight + aroundSpace));
+    onSized(
+        Size(gameControlWidth + aroundSpace, gameControlHeight + aroundSpace));
 
     return SizedBox(
       width: gameControlWidth + aroundSpace,
@@ -52,40 +70,75 @@ class GameControl extends StatelessWidget {
         children: [
           Positioned(
             top: (gameControlHeight + aroundSpace) * 0.20,
-            right: ((gameControlWidth + aroundSpace) - ((gameControlWidth + aroundSpace) * 0.35)) - gameControlButtonDetailSize,
+            right: ((gameControlWidth + aroundSpace) -
+                    ((gameControlWidth + aroundSpace) * 0.35)) -
+                gameControlButtonDetailSize,
             child: CustomPaint(
-              size: Size(gameControlButtonDetailSize, gameControlButtonDetailSize),
-              painter: GameControlButton(themeColor: AppColors.gameColorsTheme[controller.gameThemeIndex.value].primary),
+              size: Size(
+                  gameControlButtonDetailSize, gameControlButtonDetailSize),
+              painter: GameControlButton(
+                  themeColor: AppColors
+                      .gameColorsTheme[controller.gameThemeIndex.value]
+                      .primary),
             ),
           ),
           Positioned(
             top: (gameControlHeight + aroundSpace) * 0.20,
-            left: ((gameControlWidth + aroundSpace) - ((gameControlWidth + aroundSpace) * 0.35)) - gameControlButtonDetailSize,
+            left: ((gameControlWidth + aroundSpace) -
+                    ((gameControlWidth + aroundSpace) * 0.35)) -
+                gameControlButtonDetailSize,
             child: CustomPaint(
-              size: Size(gameControlButtonDetailSize, gameControlButtonDetailSize),
-              painter: GameControlButton(themeColor: AppColors.gameColorsTheme[controller.gameThemeIndex.value].primary),
+              size: Size(
+                  gameControlButtonDetailSize, gameControlButtonDetailSize),
+              painter: GameControlButton(
+                  themeColor: AppColors
+                      .gameColorsTheme[controller.gameThemeIndex.value]
+                      .primary),
             ),
           ),
           Positioned(
-            top: -(gameIconSize * 0.23),
+            top: -(gameIconSize * 0.18),
             // child: CustomPaint(
             //   size: Size((gameIconSize * 1.52), gameIconSize * 1.52),
             //   painter: GameCharacter1(themeColor: AppColors.gameColorsTheme[controller.gameThemeIndex.value].primary),
             // ),
-            child: Image.asset(ShopItem.shopItems[controller.gameThemeIndex.value].iconUrl2,width: popItBodyWidth/2,height: popItBodyWidth/2,fit: BoxFit.contain,),
-          ),
-          Positioned(
-            bottom: 5,
-            child: CustomPaint(
-              painter: GameControlDraw(
-                shadowWidth: borderWidth * 2,
-                backgroundColor: AppColors.gameColorsTheme[controller.gameThemeIndex.value].background,
-                borderColor: AppColors.gameColorsTheme[controller.gameThemeIndex.value].primary,
-                borderWidth: borderWidth,
-              ),
-              child: SizedBox(height: gameControlHeight, width: gameControlWidth),
+            child: Image.asset(
+              controller.gameThemeIndex.value == 0
+                  ? 'assets/default_character.png'
+                  : ShopItem
+                      .shopItems[controller.gameThemeIndex.value].iconUrl2,
+              width: gameIconSize * 1.52,
+              height: gameIconSize * 1.52,
+              fit: BoxFit.contain,
             ),
           ),
+          controller.gameThemeIndex.value != 0
+              ? Positioned(
+                  bottom: 5,
+                  child: CustomPaint(
+                    painter: GameControlDraw(
+                      shadowWidth: borderWidth * 2,
+                      backgroundColor: AppColors
+                          .gameColorsTheme[controller.gameThemeIndex.value]
+                          .background,
+                      borderColor: AppColors
+                          .gameColorsTheme[controller.gameThemeIndex.value]
+                          .primary,
+                      borderWidth: borderWidth,
+                    ),
+                    child: SizedBox(
+                        height: gameControlHeight, width: gameControlWidth),
+                  ),
+                )
+              : Positioned(
+                  bottom: -10,
+                  child: Image.asset(
+                    'assets/game_control_bg.png',
+                    fit: BoxFit.cover,
+                    height: gameControlHeight + 22.w,
+                    width: gameControlWidth - 10.w,
+                  ),
+                ),
           Visibility(
             visible: true,
             child: GameBarTimer(
@@ -110,11 +163,18 @@ class GameControl extends StatelessWidget {
                         alignment: Alignment.center,
                         child: Container(
                           decoration: BoxDecoration(
-                            color: AppColors.gameColorsTheme[controller.gameThemeIndex.value].primary,
-                            borderRadius: BorderRadius.circular(popItBodyHeight / 3),
+                            color: AppColors
+                                .gameColorsTheme[
+                                    controller.gameThemeIndex.value]
+                                .primary,
+                            borderRadius:
+                                BorderRadius.circular(popItBodyHeight / 3),
                             border: Border.all(
                               width: borderWidth,
-                              color: AppColors.gameColorsTheme[controller.gameThemeIndex.value].secondary,
+                              color: AppColors
+                                  .gameColorsTheme[
+                                      controller.gameThemeIndex.value]
+                                  .secondary,
                             ),
                           ),
                           width: popItBodyWidth,
@@ -126,32 +186,47 @@ class GameControl extends StatelessWidget {
                       height: popItBodyHeightReal,
                       width: popItBodyWidthReal,
                       child: Stack(
-                        children: List.generate(controller.gameButtons.length, (index) {
+                        children: List.generate(controller.gameButtons.length,
+                            (index) {
                           double halfBorder = (borderWidth) * (-1);
                           double leftPosition = 0;
                           double topPosition = halfBorder;
                           if (index == 0) {
                             leftPosition = (buttonSized / 2) - borderWidth;
                           } else if (index == 1 || index == 2) {
-                            leftPosition = ((buttonSized / 2) + (index * buttonSized)) - borderWidth;
+                            leftPosition =
+                                ((buttonSized / 2) + (index * buttonSized)) -
+                                    borderWidth;
                           } else if (index > 2 && index < 7) {
                             topPosition = buttonsRowTopDistance + halfBorder;
-                            leftPosition = (((index - 3) * (buttonSized))) - borderWidth;
+                            leftPosition =
+                                (((index - 3) * (buttonSized))) - borderWidth;
                           } else if (index >= 7 && index <= 10) {
-                            topPosition = (buttonsRowTopDistance * 2) + halfBorder;
-                            leftPosition = ((buttonSized / 2) + ((index - 7) * buttonSized)) - borderWidth;
+                            topPosition =
+                                (buttonsRowTopDistance * 2) + halfBorder;
+                            leftPosition = ((buttonSized / 2) +
+                                    ((index - 7) * buttonSized)) -
+                                borderWidth;
                           }
 
                           return Positioned(
                             left: leftPosition,
                             top: topPosition,
-                            child: GameButton(
-                              borderButtonWidth: borderButtonWidth,
-                              borderWidth: borderWidth,
-                              popItBodyHeight: popItBodyHeight,
-                              size: buttonSized,
-                              index: index,
-                            ),
+                            child: controller.gameThemeIndex.value == 0
+                                ? GameButtonNew(
+                                    borderButtonWidth: borderButtonWidth,
+                                    borderWidth: borderWidth,
+                                    popItBodyHeight: popItBodyHeight,
+                                    size: buttonSized,
+                                    index: index,
+                                  )
+                                : GameButton(
+                                    borderButtonWidth: borderButtonWidth,
+                                    borderWidth: borderWidth,
+                                    popItBodyHeight: popItBodyHeight,
+                                    size: buttonSized,
+                                    index: index,
+                                  ),
                           );
                         }),
                       ),
