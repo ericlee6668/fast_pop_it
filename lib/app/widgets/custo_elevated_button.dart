@@ -11,7 +11,8 @@ class CustomElevatedButton extends StatelessWidget {
   final bool showImage;
   final VoidCallback onPressedCallback;
 
-  const CustomElevatedButton({super.key, 
+  const CustomElevatedButton({
+    super.key,
     required this.text,
     required this.showImage,
     required this.onPressedCallback,
@@ -22,34 +23,20 @@ class CustomElevatedButton extends StatelessWidget {
     final widthSize = MediaQuery.of(context).size.width;
     final heightSize = MediaQuery.of(context).size.height;
     final HomeController controller = Get.find();
-    final isPortrait =MediaQuery.of(context).orientation == Orientation.portrait;
-    return ElevatedButton(
-      style: ButtonStyle(
-        backgroundColor: WidgetStateProperty.resolveWith<Color?>(
-          (Set<WidgetState> states) {
-            return AppColors
-                .gameColorsTheme[controller.homeThemeIndex.value].darkPrimary;
-          },
-        ),
-        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-            side: BorderSide(
-              color: AppColors
-                  .gameColorsTheme[controller.homeThemeIndex.value].tertiary,
-              width: 2.0,
-            ),
-          ),
-        ),
-      ),
-      onPressed: () {
+    final isPortrait =
+        MediaQuery.of(context).orientation == Orientation.portrait;
+    return GestureDetector(
+      onTap: () {
         onPressedCallback();
       },
       child: showImage == true
           ? Container(
               alignment: Alignment.centerLeft,
               height: heightSize * 0.4 * 0.2,
-              width: isPortrait?widthSize * 0.4 * 0.5:widthSize * 0.4 * 0.3,
+              width: isPortrait ? widthSize * 0.4 * 0.5 : widthSize * 0.4 * 0.3,
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/bg_shop_btn_buy.png'))),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

@@ -32,13 +32,13 @@ class GameView extends GetView<GameController> {
     double actionButtonSize = 26.w;
     double actionButtonSpace = heightSize * 0.06;
     double actionButtonSpaceTop = isPortrait? actionButtonSpace+30:actionButtonSpace;
-
+    bool isTablet = MediaQuery.of(context).size.shortestSide > 600;
     return Scaffold(
       backgroundColor:
           AppColors.gameColorsTheme[controller.gameThemeIndex.value].primary,
       body: Container(
-        decoration: const BoxDecoration(
-          image:  DecorationImage(image: AssetImage('assets/game_bg.webp'))
+        decoration:  BoxDecoration(
+          image:  DecorationImage(image: AssetImage(isTablet?'assets/game_pad_bg.webp':'assets/game_bg.webp'))
         ),
         child: AnimatedBackground(
           behaviour: RandomParticleBehaviour(
@@ -96,7 +96,7 @@ class GameView extends GetView<GameController> {
                 bottom: actionButtonSpaceTop,
                 size: actionButtonSize,
                 icon: Icons.arrow_back,
-                isIcon:controller.gameThemeIndex.value==0?false:true,
+                isIcon:controller.gameThemeIndex.value==-1?true:false,
                 onTap: () {
                   controller.pause();
                   Get.back();
@@ -106,7 +106,7 @@ class GameView extends GetView<GameController> {
                 icon: Icons.refresh,
                 size: actionButtonSize,
                 left: (actionButtonSpace * 2) + actionButtonSize,
-                isIcon:controller.gameThemeIndex.value==0?false:true,
+                isIcon:controller.gameThemeIndex.value==-1?true:false,
                 bottom: actionButtonSpaceTop,
                 onTap: () {
                   controller.pause();
@@ -118,7 +118,7 @@ class GameView extends GetView<GameController> {
                 size: actionButtonSize,
                 right: actionButtonSpace,
                 bottom: actionButtonSpaceTop,
-                isIcon:controller.gameThemeIndex.value==0?false:true,
+                isIcon:controller.gameThemeIndex.value==-1?true:false,
                 onTap: () {
                   controller.pause();
                   controller.goBackHome.value = true;
@@ -129,7 +129,7 @@ class GameView extends GetView<GameController> {
                 size: actionButtonSize,
                 right: (actionButtonSpace * 2) + actionButtonSize,
                 bottom: actionButtonSpaceTop,
-                isIcon:controller.gameThemeIndex.value==0?false:true,
+                isIcon:controller.gameThemeIndex.value==-1?true:false,
                 onTap: () {
                   Get.dialog(
                     const Dialog(

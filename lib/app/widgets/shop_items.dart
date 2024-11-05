@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
+import '../data/app_colors.dart';
 import '../data/app_string.dart';
 import '../data/asset_strings.dart';
 import '../data/storage_keys.dart';
@@ -182,7 +184,7 @@ class ShopItem {
       isItemPurchased: true,
       productId: "purple_color",
       iconUrl: 'assets/purple.png',
-      iconUrl2: 'assets/pop_cat.png',
+      iconUrl2: 'assets/character1.png',
       itemRealCashPrice: '\$0,50',
       showView: true,
     ),
@@ -190,77 +192,60 @@ class ShopItem {
       themIndex: 1,
       cardText: AppStrings.useString,
       itemCoinPrice: 2000,
-      isItemSelected: true,
+      isItemSelected: false,
       isItemPurchased: true,
-      productId: "black_color",
-      iconUrl: 'assets/grey.png',
-      iconUrl2: 'assets/character3.png',
+      productId: "purple_color",
+      iconUrl: 'assets/purple.png',
+      iconUrl2: 'assets/character2.png',
       itemRealCashPrice: '\$0,50',
       showView: true,
     ),
     ShopItem(
       themIndex: 2,
       cardText: AppStrings.useString,
-      itemCoinPrice: 1000,
+      itemCoinPrice: 2000,
       isItemSelected: false,
-      isItemPurchased: true,
-      productId: "black_color",
-      iconUrl: 'assets/grey.png',
-      iconUrl2: 'assets/character2.png',
+      isItemPurchased: false,
+      productId: "purple_color",
+      iconUrl: 'assets/purple.png',
+      iconUrl2: 'assets/character3.png',
       itemRealCashPrice: '\$0,50',
       showView: true,
     ),
     ShopItem(
       themIndex: 3,
-      cardText: AppStrings.buyString,
-      itemCoinPrice: 1000,
-      isItemSelected: false,
-      isItemPurchased: false,
-      productId: "red_color",
-      itemRealCashPrice: '\$0,50',
-      iconUrl: 'assets/dark_blue.png',
-      iconUrl2: 'assets/red-dragon-ball.png',
-      optionalIconUrl: AssetStrings.popCoinImage,
-      showView: true,
-    ),
-
-    ShopItem(
-      themIndex: 4,
-      cardText: AppStrings.buyString,
+      cardText: AppStrings.useString,
       itemCoinPrice: 2000,
       isItemSelected: false,
       isItemPurchased: false,
-      productId: "dark_blue_color",
+      productId: "purple_color",
+      iconUrl: 'assets/purple.png',
+      iconUrl2: 'assets/character4.png',
       itemRealCashPrice: '\$0,50',
-      iconUrl: 'assets/dark_blue.png',
-      iconUrl2: 'assets/character6.png',
-      optionalIconUrl: AssetStrings.popCoinImage,
+      showView: true,
+    ),
+    ShopItem(
+      themIndex: 4,
+      cardText: AppStrings.useString,
+      itemCoinPrice: 2000,
+      isItemSelected: false,
+      isItemPurchased: false,
+      productId: "purple_color",
+      iconUrl: 'assets/purple.png',
+      iconUrl2: 'assets/character5.png',
+      itemRealCashPrice: '\$0,50',
       showView: true,
     ),
     ShopItem(
       themIndex: 5,
-      cardText: AppStrings.buyString,
-      itemCoinPrice: 2000,
-      isItemSelected: false,
-      isItemPurchased: true,
-      productId: "dark_blue_color",
-      itemRealCashPrice: '\$0,50',
-      iconUrl: 'assets/dark_blue.png',
-      iconUrl2: 'assets/character4.png',
-      optionalIconUrl: AssetStrings.popCoinImage,
-      showView: true,
-    ),
-    ShopItem(
-      themIndex: 6,
-      cardText: AppStrings.buyString,
+      cardText: AppStrings.useString,
       itemCoinPrice: 2000,
       isItemSelected: false,
       isItemPurchased: false,
-      productId: "pink_color",
-      iconUrl: 'assets/pink.png',
-      iconUrl2: 'assets/character7.png',
+      productId: "purple_color",
+      iconUrl: 'assets/purple.png',
+      iconUrl2: 'assets/character6.png',
       itemRealCashPrice: '\$0,50',
-      optionalIconUrl: AssetStrings.popCoinImage,
       showView: true,
     ),
   ];
@@ -327,14 +312,25 @@ class ShopItem {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text(AppStrings.buyNoticeString),
-            content: Text(AppStrings.buyCoinNENString),
+            backgroundColor: AppColors.gameColorsTheme[0].primary,
+            content: SizedBox(
+                width: Get.width*0.6,
+                height: Get.height * 0.1,
+                child: Text(AppStrings.buyCoinNENString,
+                    style: TextStyle(
+                        fontSize: 13.sp,
+                        color: Colors.white,
+                        fontFamily: 'HYM4GJM'))),
             actions: [
-              ElevatedButton(
-                onPressed: () {
+              GestureDetector(
+                onTap: () {
                   Navigator.of(context).pop();
                 },
-                child: const Text('Close'),
+                child: Center(
+                    child: SizedBox(
+                        width: 100.w,
+                        height: 35.w,
+                        child: Image.asset('assets/btn_close.png'))),
               ),
             ],
           );

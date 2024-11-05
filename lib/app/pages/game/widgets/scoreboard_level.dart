@@ -24,7 +24,7 @@ class ScoreboardLevel extends StatelessWidget {
             Text(
               "${AppStrings.levelString}:",
               style: TextStyle(
-                  fontFamily: 'Dolphin',
+                  fontFamily: 'HYM4GJM',
                   color: Colors.white,
                   fontSize: MediaQuery.of(context).size.width * TextSizes.levelScoreSize
               ),
@@ -33,7 +33,7 @@ class ScoreboardLevel extends StatelessWidget {
               child: Text(
                 controller.level.value.toString(),
                 style: TextStyle(
-                    fontFamily: 'Dolphin',
+                    fontFamily: 'HYM4GJM',
                     color: Colors.white,
                     fontSize: MediaQuery.of(context).size.width * TextSizes.levelScoreSize
                 ),

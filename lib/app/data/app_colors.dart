@@ -152,7 +152,7 @@ class AppColors {
       background: const Color(0xFF00897B),
       primary: const Color(0xFF00897B),
       darkPrimary: const Color(0xFF00695C),
-      secondary: const Color(0xFF4DB6AC),
+      secondary: const Color(0xFFFFFFFF),
       tertiary: const Color(0xFFA9A489),
       text: const Color(0XFFf1ebc9),
     ),

@@ -16,20 +16,21 @@ class RankController extends GetxController {
     print('onInit');
   }
 
-   @override
+  @override
   void onClose() {
     print('onclose');
     super.onClose();
   }
 
   void loadRankList() {
-    String jsonStr = GetStorage().read(StorageKeys.rankRecordKey)??'';
-    if(jsonStr.isNotEmpty) {
+    String jsonStr = GetStorage().read(StorageKeys.rankRecordKey) ?? '';
+    if (jsonStr.isNotEmpty) {
       List<dynamic> jsonList = jsonDecode(jsonStr);
       List<GameScore> scoreList =
-      jsonList.map((json) => GameScore.fromJson(json)).toList();
+          jsonList.map((json) => GameScore.fromJson(json)).toList();
+      scoreList.sort((a, b) => b.score!.compareTo(a.score ?? 0));
       rankList.value = scoreList;
-    }else{
+    } else {
       rankList.value = [];
     }
   }

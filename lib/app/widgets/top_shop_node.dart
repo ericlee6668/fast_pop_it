@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 
@@ -19,50 +20,49 @@ class TopShopNode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final HomeController controller = Get.find();
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.065,
-      width:  MediaQuery.of(context).size.width*0.3,
-      child: Container(
-        height: MediaQuery.of(context).size.height * 0.07,
-        width: MediaQuery.of(context).size.width * 0.3,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: AppColors
-              .gameColorsTheme[controller.homeThemeIndex.value].darkPrimary,
-          borderRadius: BorderRadius.circular(12),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              offset: const Offset(2, 2),
-              blurRadius: 6,
+    return Container(
+      height: 27.w,
+      width: 90.w,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: AppColors
+            .gameColorsTheme[0].primary,
+        borderRadius: BorderRadius.circular(20.w),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            offset: const Offset(2, 2),
+            blurRadius: 6,
+          ),
+          BoxShadow(
+            color: Colors.white.withOpacity(0.7),
+            offset: const Offset(-2, -2),
+            blurRadius: 6,
+          ),
+        ],
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          SizedBox(
+            height: 24.w,
+            width: 24.w,
+            child: Image.asset(
+              currencyIcon,
             ),
-            BoxShadow(
-              color: Colors.white.withOpacity(0.7),
-              offset: const Offset(-2, -2),
-              blurRadius: 6,
-            ),
-          ],
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.065 * 0.65,
-              width: MediaQuery.of(context).size.width * 0.16 * 0.4,
-              child: Image.asset(
-                currencyIcon,
-              ),
-            ),
-            Text(
+          ),
+          Padding(
+            padding:  EdgeInsets.only(right: 5.w),
+            child: Text(
               '$currencyValue',
               style:  TextStyle(
-                fontSize: MediaQuery.of(context).size.width*0.03,
+                fontSize: 13.sp,
                 color: Colors.white,
                 fontWeight: FontWeight.w500,
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

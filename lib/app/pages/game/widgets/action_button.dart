@@ -47,10 +47,10 @@ class ActionButton extends StatelessWidget {
             height: size,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(size / 2),
-              color: controller.gameThemeIndex.value != 0
-                  ? AppColors.gameColorsTheme[controller.gameThemeIndex.value]
-                      .secondary
-                  : Colors.transparent,
+              color: controller.gameThemeIndex.value != -1
+                  ? Colors.transparent
+                  : AppColors.gameColorsTheme[controller.gameThemeIndex.value]
+                  .secondary,
             ),
             child: Center(
               child: isIcon

@@ -7,21 +7,17 @@ import '../pages/home/controllers/home_controller.dart';
 
 class ButtonImageDefault extends StatelessWidget {
   final String? buttonText;
-  final double? buttonFontWidth;
+  final double? buttonTextSize;
   final double? buttonBorder;
-  final bool? buttonBorderState;
-  final bool? buttonTextBorder;
   final double? buttonBorderWidth;
   final double? buttonTextIntensity;
   final VoidCallback? onPressedCallback;
 
   const ButtonImageDefault({super.key, 
     this.buttonText,
+    this.buttonTextSize,
     this.onPressedCallback,
-    this.buttonFontWidth,
     this.buttonBorder,
-    this.buttonBorderState,
-    this.buttonTextBorder,
     this.buttonBorderWidth,
     this.buttonTextIntensity,
   });
@@ -41,7 +37,7 @@ class ButtonImageDefault extends StatelessWidget {
         child: Text(
                 buttonText ?? '',
                 style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width * buttonFontWidth!,
+                  fontSize: buttonTextSize??18.sp,
                   color: AppColors
                       .gameColorsTheme[controller.homeThemeIndex.value]
                       .text,

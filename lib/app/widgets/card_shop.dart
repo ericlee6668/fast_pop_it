@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:pop_it/app/widgets/shop_items.dart';
 
 import '../data/app_colors.dart';
 import '../pages/home/controllers/home_controller.dart';
@@ -30,12 +32,16 @@ class ShopCard extends StatelessWidget {
     return Container(
       height: height,
       width: width,
+      margin: EdgeInsets.symmetric(horizontal: 16.w),
       decoration: BoxDecoration(
-        color: AppColors.gameColorsTheme[index].background,
-        borderRadius: BorderRadius.circular(12),
+        color: ShopItem.shopItems[index].isItemSelected
+            ? AppColors.gameColorsTheme[0].background
+            : AppColors.gameColorsTheme[0].primary,
+        borderRadius: BorderRadius.circular(10.w),
+        border: Border.all(color: Colors.white, width: 1.w),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.white.withOpacity(0.1),
             offset: const Offset(2, 2),
             blurRadius: 6,
           ),
@@ -49,39 +55,57 @@ class ShopCard extends StatelessWidget {
       child: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Image.asset(
                 iconUrl,
                 height: constraints.maxHeight * 0.8,
-                width: constraints.maxWidth * 0.6,
+                width: constraints.maxWidth * 0.2,
+              ),
+              Visibility(
+                visible: !ShopItem.shopItems[index].isItemPurchased,
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'assets/gold_coin.png',
+                      width: 20.w,
+                      height: 20.w,
+                    ),
+                    SizedBox(
+                      width: 2.w,
+                    ),
+                    Text(
+                      ShopItem.shopItems[index].itemCoinPrice.toString(),
+                      style: TextStyle(color: Colors.white, fontSize: 12.sp),
+                    ),
+                  ],
+                ),
               ),
               Container(
-                width: 100,
+                width: 40.w,
+                height: 20.w,
+                alignment: Alignment.center,
                 margin: const EdgeInsets.only(right: 10),
                 decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(20)),
-                child: Text(cardText,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      // fontFamily: 'Cute-Dolphin-Regular',
-                      fontSize: constraints.maxHeight * 0.2,
-                      color: AppColors
-                          .gameColorsTheme[controller.homeThemeIndex.value]
-                          .text,
-                      shadows: [
-                        Shadow(
-                          offset: const Offset(2, 2),
-                          blurRadius: 4,
-                          color: Colors.black.withOpacity(0.1),
-                        ),
-                      ],
-                    )),
+                    borderRadius: BorderRadius.circular(10.w),
+                    image: DecorationImage(image: AssetImage(getBtnBg(index)))),
               ),
             ],
           );
         },
       ),
     );
+  }
+
+  String getBtnBg(int index) {
+    if (ShopItem.shopItems[index].isItemPurchased) {
+      if (ShopItem.shopItems[index].isItemSelected) {
+        return 'assets/shop_btn_using.png';
+      } else {
+        return 'assets/shop_btn_use.png';
+      }
+    } else {
+      return 'assets/shop_btn_buy.png';
+    }
   }
 }

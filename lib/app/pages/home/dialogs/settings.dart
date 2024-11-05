@@ -24,7 +24,7 @@ class _SettingsState extends State<Settings> {
     super.initState();
   }
 
-   String _selectedItem =
+  String _selectedItem =
       GetStorage().read(StorageKeys.languageKey) ?? 'English';
   final List<String> _dropdownItems = [
     'English',
@@ -45,18 +45,16 @@ class _SettingsState extends State<Settings> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.0),
         ),
-        backgroundColor: AppColors
-            .gameColorsTheme[controller.homeThemeIndex.value].primary,
+        backgroundColor: Colors.transparent,
         child: Container(
           alignment: Alignment.bottomCenter,
-          width: widthSize * 0.9, // 90% of screen
-          height: controller.isPortrait(context)?heightSize * 0.5:heightSize * 0.9, // 90% of screen
+          width: widthSize * 0.9,
+          // 90% of screen
+          height: heightSize * 0.7,
+          // 90% of screen
           decoration: BoxDecoration(
-            border: Border.all(
-              color: AppColors
-                  .gameColorsTheme[controller.homeThemeIndex.value].tertiary,
-              width: 3,
-            ),
+            image: const DecorationImage(
+                image: AssetImage('assets/bg_dialog_rank_list.png')),
             borderRadius: BorderRadius.circular(12.0),
           ),
           child: Column(
@@ -124,7 +122,9 @@ class _SettingsState extends State<Settings> {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 10,),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       decoration: BoxDecoration(
@@ -163,15 +163,13 @@ class _SettingsState extends State<Settings> {
                                   item,
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize:
-                                        20,
+                                    fontSize: 20,
                                     // fontFamily: 'Cute-Dolphin-Regular',
                                     shadows: [
                                       Shadow(
                                         offset: const Offset(1, 1),
                                         blurRadius: 2,
-                                        color:
-                                            Colors.white.withOpacity(0.5),
+                                        color: Colors.white.withOpacity(0.5),
                                       ),
                                     ],
                                   ),

@@ -20,8 +20,10 @@ import '../../../widgets/text_neumorphic.dart';
 import '../../game/views/game_view.dart';
 import '../../game/widgets/action_button2.dart';
 import '../controllers/home_controller.dart';
+import '../dialogs/rank_list_dialog.dart';
 import '../dialogs/settings.dart';
 import '../dialogs/shop.dart';
+import '../dialogs/shop_new.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
@@ -44,8 +46,7 @@ class HomeView extends GetView<HomeController> {
     return Obx(
       () => Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: AppColors
-            .gameColorsTheme[controller.homeThemeIndex.value].background,
+        backgroundColor: AppColors.gameColorsTheme[0].background,
         body: AnimatedBackground(
           behaviour: RandomParticleBehaviour(
             options: const ParticleOptions(
@@ -60,44 +61,40 @@ class HomeView extends GetView<HomeController> {
           vsync: controller,
           child: Stack(
             children: [
-              controller.homeThemeIndex.value == 0
-                  ? Positioned(
-                      right: 0,
-                      bottom: 0,
-                      child: Image.asset('assets/bg_right.png',
-                          height: heightSize * 0.8),
-                    )
-                  : RightCorner(
-                      height: heightSize * 0.8,
-                      width: widthSize * 0.4,
-                      cornerColor: AppColors
-                          .gameColorsTheme[controller.homeThemeIndex.value]
-                          .primary,
-                    ),
-              controller.homeThemeIndex.value == 0
-                  ? Image.asset(
-                      'assets/bg_left.png',
-                      width: widthSize * 0.2,
-                    )
-                  : LeftCorner(
-                      cornerColor: AppColors
-                          .gameColorsTheme[controller.homeThemeIndex.value]
-                          .primary,
-                      height: heightSize * 0.4,
-                      width: widthSize * 0.2,
-                    ),
+              Positioned(
+                right: 0,
+                bottom: 0,
+                child: Image.asset('assets/bg_right.png',
+                    height: heightSize * 0.8),
+              ),
+
+              Image.asset(
+                'assets/bg_left.png',
+                width: widthSize * 0.2,
+              ),
 
               // Visibility(child: CustomPaint(painter: RPSCustomPainter(),)),
-              RankListIcon(
-                elementColor: AppColors
-                    .gameColorsTheme[controller.homeThemeIndex.value]
-                    .background,
-                top: heightSize * 0.06,
-                right: 92.w,
+              // RankListIcon(
+              //   elementColor: AppColors
+              //       .gameColorsTheme[controller.homeThemeIndex.value]
+              //       .background,
+              //   top: heightSize * 0.06,
+              //   right: 92.w,
+              //   size: 26.w,
+              // ),
+              ActionButton2(
+                isIcon: false,
+                icon: Icons.date_range_outlined,
                 size: 26.w,
+                right: 92.w,
+                top: heightSize * 0.06,
+                onTap: () {
+                  FlameAudio.play('click_2.mp3');
+                  Get.dialog(const RankListDialog());
+                },
               ),
               ActionButton2(
-                isIcon:controller.homeThemeIndex.value!=0 ,
+                isIcon: false,
                 icon: Icons.shopping_cart_outlined,
                 size: 26.w,
                 right: 50.w,
@@ -105,17 +102,14 @@ class HomeView extends GetView<HomeController> {
                 onTap: () {
                   FlameAudio.play('click_2.mp3');
                   Get.dialog(
-                    const Dialog(
-                      backgroundColor: Colors.transparent,
-                      child: Shop(),
-                    ),
+                    const ShopNew(),
                   );
                 },
               ),
               ActionButton2(
-                isIcon:controller.homeThemeIndex.value!=0 ,
+                isIcon: false,
                 icon: Icons.settings,
-                size:  26.w,
+                size: 26.w,
                 right: 10.w,
                 top: heightSize * 0.06,
                 onTap: () {
@@ -152,8 +146,11 @@ class HomeView extends GetView<HomeController> {
                       padding: EdgeInsetsDirectional.only(
                         bottom: heightSize * 0.01,
                       ),
-                      child: controller.homeThemeIndex.value == 0
-                          ? ButtonImageDefault(
+                      child: controller.homeThemeIndex.value == -1
+                          ? ButtonNeumorphic(
+                              width: 0.5,
+                              height:
+                                  controller.isPortrait(context) ? 0.1 : 0.18,
                               buttonBorderWidth: 1,
                               buttonFontWidth: TextSizes.configTittleSize,
                               buttonTextBorder: true,
@@ -166,13 +163,8 @@ class HomeView extends GetView<HomeController> {
                                 });
                               },
                             )
-                          : ButtonNeumorphic(
-                              width: 0.5,
-                              height:
-                                  controller.isPortrait(context) ? 0.1 : 0.18,
+                          : ButtonImageDefault(
                               buttonBorderWidth: 1,
-                              buttonFontWidth: TextSizes.configTittleSize,
-                              buttonTextBorder: true,
                               buttonTextIntensity: 0.6,
                               buttonText: controller.classicName.toString(),
                               onPressedCallback: () {
@@ -190,8 +182,11 @@ class HomeView extends GetView<HomeController> {
                       padding: EdgeInsetsDirectional.only(
                         bottom: heightSize * 0.01,
                       ),
-                      child: controller.homeThemeIndex.value == 0
-                          ? ButtonImageDefault(
+                      child: controller.homeThemeIndex.value == -1
+                          ? ButtonNeumorphic(
+                              width: 0.5,
+                              height:
+                                  controller.isPortrait(context) ? 0.1 : 0.18,
                               buttonBorderWidth: 1,
                               buttonFontWidth: TextSizes.configTittleSize,
                               buttonTextBorder: true,
@@ -203,13 +198,8 @@ class HomeView extends GetView<HomeController> {
                                     arguments: {"mode": GameModes.SCORE_MODE});
                               },
                             )
-                          : ButtonNeumorphic(
-                              width: 0.5,
-                              height:
-                                  controller.isPortrait(context) ? 0.1 : 0.18,
+                          : ButtonImageDefault(
                               buttonBorderWidth: 1,
-                              buttonFontWidth: TextSizes.configTittleSize,
-                              buttonTextBorder: true,
                               buttonTextIntensity: 0.6,
                               buttonText: controller.scoreName.toString(),
                               onPressedCallback: () {
@@ -226,8 +216,11 @@ class HomeView extends GetView<HomeController> {
                       padding: EdgeInsetsDirectional.only(
                         bottom: heightSize * 0.01,
                       ),
-                      child: controller.homeThemeIndex.value == 0
-                          ? ButtonImageDefault(
+                      child: controller.homeThemeIndex.value == -1
+                          ? ButtonNeumorphic(
+                              width: 0.5,
+                              height:
+                                  controller.isPortrait(context) ? 0.1 : 0.18,
                               buttonBorderWidth: 1,
                               buttonFontWidth: TextSizes.configTittleSize,
                               buttonTextBorder: true,
@@ -239,13 +232,8 @@ class HomeView extends GetView<HomeController> {
                                     arguments: {"mode": GameModes.MEMORY_MODE});
                               },
                             )
-                          : ButtonNeumorphic(
-                              width: 0.5,
-                              height:
-                                  controller.isPortrait(context) ? 0.1 : 0.18,
+                          : ButtonImageDefault(
                               buttonBorderWidth: 1,
-                              buttonFontWidth: TextSizes.configTittleSize,
-                              buttonTextBorder: true,
                               buttonTextIntensity: 0.6,
                               buttonText: controller.memoryName.toString(),
                               onPressedCallback: () {
@@ -271,18 +259,18 @@ class HomeView extends GetView<HomeController> {
                         );
                       },
                       child: Padding(
-                        padding:  EdgeInsets.only(bottom: 20.h),
+                        padding: EdgeInsets.only(bottom: 20.h),
                         child: Text(
                           AppStrings.aboutString,
                           style: TextStyle(
-                              color: Colors.white,
-                              decoration: TextDecoration.underline,
-                              decorationColor: Colors.white,
-                              fontSize: controller.isPortrait(context)
-                                  ? MediaQuery.of(context).size.height *
-                                      TextSizes.bntMenuSize
-                                  : MediaQuery.of(context).size.width *
-                                      TextSizes.bntMenuSize,
+                            color: Colors.white,
+                            decoration: TextDecoration.underline,
+                            decorationColor: Colors.white,
+                            fontSize: controller.isPortrait(context)
+                                ? MediaQuery.of(context).size.height *
+                                    TextSizes.bntMenuSize
+                                : MediaQuery.of(context).size.width *
+                                    TextSizes.bntMenuSize,
                             fontWeight: FontWeight.bold,
                             shadows: [
                               Shadow(

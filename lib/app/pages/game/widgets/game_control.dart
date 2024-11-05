@@ -69,7 +69,7 @@ class GameControl extends StatelessWidget {
         alignment: AlignmentDirectional.center,
         children: [
           Positioned(
-            top: (gameControlHeight + aroundSpace) * 0.20,
+            top: (gameControlHeight + aroundSpace) * 0.24,
             right: ((gameControlWidth + aroundSpace) -
                     ((gameControlWidth + aroundSpace) * 0.35)) -
                 gameControlButtonDetailSize,
@@ -83,7 +83,7 @@ class GameControl extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: (gameControlHeight + aroundSpace) * 0.20,
+            top: (gameControlHeight + aroundSpace) * 0.24,
             left: ((gameControlWidth + aroundSpace) -
                     ((gameControlWidth + aroundSpace) * 0.35)) -
                 gameControlButtonDetailSize,

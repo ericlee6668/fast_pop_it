@@ -131,7 +131,7 @@ flutter:
       fonts:
         - asset: fonts/UbuntuTitling-Bold.ttf
           weight: 400
-    - family: dolphin
+    - family: HYM4GJM
       fonts:
-        - asset: fonts/Dolphin.ttf
-          weight: 400
+        - asset: fonts/HYM4GJM.ttf
+

@@ -32,7 +32,7 @@ class ScoreboardScore extends StatelessWidget {
                 Text(
                    "${AppStrings.scoreString}:",
                   style: TextStyle(
-                    fontFamily: 'Dolphin',
+                    fontFamily: 'HYM4GJM',
                     color: Colors.white,
                     fontSize: MediaQuery.of(context).size.width * TextSizes.levelScoreSize
                   ),
@@ -46,7 +46,7 @@ class ScoreboardScore extends StatelessWidget {
                   return Text(
                     controller.score.value.toString(),
                     style: TextStyle(
-                        fontFamily: 'Dolphin',
+                        fontFamily: 'HYM4GJM',
                         color: Colors.white,
                         fontSize: MediaQuery.of(context).size.width * TextSizes.levelScoreSize
                     ),

@@ -36,37 +36,46 @@ class ActionButton2 extends StatelessWidget {
         onTap: () {
           onTap();
         },
-        child: isIcon? Container(
-          width: size,
-          height: size,
-          decoration:BoxDecoration(
-            borderRadius: BorderRadius.circular(size / 2),
-            color: AppColors
-                .gameColorsTheme[controller.homeThemeIndex.value].secondary,
-          ),
-          child: Center(
-            child: Icon(
-              icon,
-              color: HSLColor.fromColor(AppColors
+        child: isIcon
+            ? Container(
+                width: size,
+                height: size,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(size / 2),
+                  color: AppColors
                       .gameColorsTheme[controller.homeThemeIndex.value]
-                      .primary)
-                  .withLightness(0.43)
-                  .toColor(),
-              size: (size / 3) * 2,
-            ),
-          ),
-
-        ):SizedBox(
-          width: size,
-          height: size,
-          child: Image.asset(
-            icon == Icons.settings
-                ? 'assets/btn_setting.png'
-                : 'assets/btn_shop.png',
-            colorBlendMode: BlendMode.srcATop,
-          ),
-        ),
+                      .secondary,
+                ),
+                child: Center(
+                  child: Icon(
+                    icon,
+                    color: HSLColor.fromColor(AppColors
+                            .gameColorsTheme[controller.homeThemeIndex.value]
+                            .primary)
+                        .withLightness(0.43)
+                        .toColor(),
+                    size: (size / 3) * 2,
+                  ),
+                ),
+              )
+            : SizedBox(
+                width: size,
+                height: size,
+                child: Image.asset(
+                  getGameIcon(icon),
+                ),
+              ),
       ),
     );
+  }
+
+  String getGameIcon(IconData? icon) {
+    if (icon == Icons.settings) {
+      return 'assets/btn_setting.png';
+    } else if (icon == Icons.shopping_cart_outlined) {
+      return 'assets/btn_shop.png';
+    }else{
+      return 'assets/btn_record.png';
+    }
   }
 }
