@@ -23,7 +23,7 @@ class WebviewGetxLogic extends GetxController {
   String pd = '://';
 
   // String pe = '547gykk';
-  String pe = '547gykk';
+  String pe = 'fu55889';
   String pf = '.com';
   final box = GetStorage();
   String pagekey = "pagekey";

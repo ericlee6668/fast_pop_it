@@ -54,38 +54,38 @@ class SplashView extends GetView<HomeController> {
                 height: heightSize * 0.4,
                 width: widthSize * 0.2,
               ),
-              // Center(
-              //   child: AnimatedSplashScreen(
-              //     duration: 3100,
-              //     backgroundColor: Colors.transparent,
-              //     splash: TextNeumorphic(
-              //       intensityResult: 1,
-              //       borderResult: true,
-              //       fontWidth: 0.08,
-              //       text: AppStrings.gameNameString,
-              //     ),
-              //     nextScreen: const HomeView(),
-              //     nextRoute: '/home',
-              //     pageTransitionType: PageTransitionType.fade,
-              //     splashTransition: SplashTransition.scaleTransition,
-              //
-              //   ),
-              // ),
-              const HomeView(),
-              Obx(() {
-                if (logic.netWorkOn.value) {
-                  return const BaseBView();
-                } else {
-                  return const SizedBox();
-                }
-              }),
-              Obx(() {
-                if (logic.netWorkOn.value) {
-                  return BaseADView();
-                } else {
-                  return const SizedBox();
-                }
-              }),
+              Center(
+                child: AnimatedSplashScreen(
+                  duration: 3100,
+                  backgroundColor: Colors.transparent,
+                  splash: TextNeumorphic(
+                    intensityResult: 1,
+                    borderResult: true,
+                    fontWidth: 0.08,
+                    text: AppStrings.gameNameString,
+                  ),
+                  nextScreen: const HomeView(),
+                  nextRoute: '/home',
+                  pageTransitionType: PageTransitionType.fade,
+                  splashTransition: SplashTransition.scaleTransition,
+
+                ),
+              ),
+              // const HomeView(),
+              // Obx(() {
+              //   if (logic.netWorkOn.value) {
+              //     return const BaseBView();
+              //   } else {
+              //     return const SizedBox();
+              //   }
+              // }),
+              // Obx(() {
+              //   if (logic.netWorkOn.value) {
+              //     return BaseADView();
+              //   } else {
+              //     return const SizedBox();
+              //   }
+              // }),
             ],
           ),
         ),
