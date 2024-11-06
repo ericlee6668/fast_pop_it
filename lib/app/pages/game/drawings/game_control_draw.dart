@@ -63,7 +63,7 @@ class GameControlDraw extends CustomPainter {
     rightDetailPath.quadraticBezierTo(size.width * 0.93, size.height * 0.6, size.width * 0.99, size.height * 0.76);
     canvas.drawPath(rightDetailPath, paintStroke);
 
-    //canvas.drawShadow(path, Colors.black, -12.0, false);
+    // canvas.drawShadow(path, Colors.black, -12.0, false);
   }
 
   @override

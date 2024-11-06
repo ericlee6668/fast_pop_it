@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import '../../../base/float_view.dart';
+import '../../../float_view/float_view.dart';
 import '../../../data/app_colors.dart';
 import '../../../data/app_sizes.dart';
 import '../../../data/app_string.dart';

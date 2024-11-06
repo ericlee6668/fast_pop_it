@@ -16,7 +16,7 @@ class GameControlButton extends CustomPainter {
       ..maskFilter = MaskFilter.blur(BlurStyle.inner, size.width * 0.15)
       ..color = HSLColor.fromColor(themeColor).toColor();
 
-    // Inicia o path
+    //  path
     final path = Path()
       ..moveTo(size.width * 0.3, 0)
       ..lineTo(size.width * 0.7, 0)

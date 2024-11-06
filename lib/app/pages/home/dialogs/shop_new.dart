@@ -1,11 +1,10 @@
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:get/get.dart';
 
-import '../../../data/app_colors.dart';
-import '../../../data/app_string.dart';
 import '../../../data/asset_strings.dart';
+import '../../../widgets/button_image_default.dart';
 import '../../../widgets/custom_gridview.dart';
 import '../../../widgets/top_shop_node.dart';
 import '../controllers/home_controller.dart';
@@ -46,26 +45,10 @@ class _ShopState extends State<ShopNew> {
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(
                   height: 20,
-                ),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: GestureDetector(
-                    onTap: () {
-                      Get.back();
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: Icon(
-                        Icons.close,
-                        color: Colors.white,
-                        size: 16.w,
-                      ),
-                    ),
-                  ),
                 ),
                 Align(
                   alignment: Alignment.topCenter,
@@ -80,6 +63,15 @@ class _ShopState extends State<ShopNew> {
                     heightSize: heightSize,
                     widthSize: widthSize,
                   ),
+                ),
+                 ButtonImageDefault(
+                  buttonBorderWidth: 1,
+                  buttonTextIntensity: 0.6,
+                  imgAssets: 'assets/btn_close.png',
+                  onPressedCallback: () {
+                    FlameAudio.play('click_1.mp3');
+                    Get.back();
+                  },
                 )
               ],
             ),

@@ -1,4 +1,3 @@
-
 import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,6 +8,7 @@ import 'package:get_storage/get_storage.dart';
 import '../../../data/app_colors.dart';
 import '../../../data/storage_keys.dart';
 import '../../../widgets/explode_widget.dart';
+import '../../home/dialogs/setting_dialog.dart';
 import '../../home/dialogs/settings.dart';
 import '../controllers/game_controller.dart';
 import '../widgets/action_button.dart';
@@ -26,20 +26,26 @@ class GameView extends GetView<GameController> {
 
   @override
   Widget build(BuildContext context) {
-    final isPortrait  = MediaQuery.of(context).orientation == Orientation.portrait;
-    final heightSize = isPortrait? MediaQuery.of(context).size.width:MediaQuery.of(context).size.height;
+    final isPortrait =
+        MediaQuery.of(context).orientation == Orientation.portrait;
+    final heightSize = isPortrait
+        ? MediaQuery.of(context).size.width
+        : MediaQuery.of(context).size.height;
     final controller = Get.put(GameController());
     double actionButtonSize = 26.w;
     double actionButtonSpace = heightSize * 0.06;
-    double actionButtonSpaceTop = isPortrait? actionButtonSpace+30:actionButtonSpace;
+    double actionButtonSpaceTop =
+        isPortrait ? actionButtonSpace + 30 : actionButtonSpace;
     bool isTablet = MediaQuery.of(context).size.shortestSide > 600;
     return Scaffold(
       backgroundColor:
           AppColors.gameColorsTheme[controller.gameThemeIndex.value].primary,
       body: Container(
-        decoration:  BoxDecoration(
-          image:  DecorationImage(image: AssetImage(isTablet?'assets/game_pad_bg.webp':'assets/game_bg.webp'))
-        ),
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(isTablet
+                    ? 'assets/game_pad_bg.webp'
+                    : 'assets/game_bg.webp'))),
         child: AnimatedBackground(
           behaviour: RandomParticleBehaviour(
             options: const ParticleOptions(
@@ -54,30 +60,28 @@ class GameView extends GetView<GameController> {
           vsync: controller,
           child: Stack(
             children: [
-
               Container(
                 alignment: Alignment.bottomCenter,
-                padding:  const EdgeInsets.only(bottom: 200),
+                padding: const EdgeInsets.only(bottom: 200),
                 child: VibrationAnimationPage(
                   controller: controller.controlAnimationController,
                   child: Obx(
                     () => IgnorePointer(
                       ignoring: controller.gameOver.value,
-                      child:  GameControl(
+                      child: GameControl(
                         onSized: (size) {},
-                        margin: 80,
+                        margin: isTablet ? 80 : 10,
                         controller: controller,
-                        screenHeight:
-                            controller.controller.isPortrait(context)
-                                ? Get.width-30
-                                : Get.height,
+                        screenHeight: controller.controller.isPortrait(context)
+                            ? Get.width - 30
+                            : Get.height,
                       ),
                     ),
                   ),
                 ),
               ),
               ScoreboardLevel(margin: 20),
-              Visibility(visible:false,child: ScoreboardBest(margin: 20)),
+              Visibility(visible: false, child: ScoreboardBest(margin: 20)),
               ScoreboardScore(margin: 20),
               GameOver(),
               RestartGame(),
@@ -96,7 +100,7 @@ class GameView extends GetView<GameController> {
                 bottom: actionButtonSpaceTop,
                 size: actionButtonSize,
                 icon: Icons.arrow_back,
-                isIcon:controller.gameThemeIndex.value==-1?true:false,
+                isIcon: controller.gameThemeIndex.value == -1 ? true : false,
                 onTap: () {
                   controller.pause();
                   Get.back();
@@ -106,7 +110,7 @@ class GameView extends GetView<GameController> {
                 icon: Icons.refresh,
                 size: actionButtonSize,
                 left: (actionButtonSpace * 2) + actionButtonSize,
-                isIcon:controller.gameThemeIndex.value==-1?true:false,
+                isIcon: controller.gameThemeIndex.value == -1 ? true : false,
                 bottom: actionButtonSpaceTop,
                 onTap: () {
                   controller.pause();
@@ -118,7 +122,7 @@ class GameView extends GetView<GameController> {
                 size: actionButtonSize,
                 right: actionButtonSpace,
                 bottom: actionButtonSpaceTop,
-                isIcon:controller.gameThemeIndex.value==-1?true:false,
+                isIcon: controller.gameThemeIndex.value == -1 ? true : false,
                 onTap: () {
                   controller.pause();
                   controller.goBackHome.value = true;
@@ -129,15 +133,11 @@ class GameView extends GetView<GameController> {
                 size: actionButtonSize,
                 right: (actionButtonSpace * 2) + actionButtonSize,
                 bottom: actionButtonSpaceTop,
-                isIcon:controller.gameThemeIndex.value==-1?true:false,
+                isIcon: controller.gameThemeIndex.value == -1 ? true : false,
                 onTap: () {
                   Get.dialog(
-                    const Dialog(
-                      backgroundColor: Colors.transparent,
-                      child: Settings(),
-                    ),
+                    const SettingDialog(),
                   );
-
                 },
               ),
             ],

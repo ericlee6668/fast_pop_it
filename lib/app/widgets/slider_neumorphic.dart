@@ -9,10 +9,10 @@ import '../pages/home/controllers/home_controller.dart';
 
 class SliderNeumorphic extends StatelessWidget {
   final String sliderText;
-  final bool sliderVar;
+   bool sliderVar;
   final ValueChanged<bool> onChangedSlider;
 
-  const SliderNeumorphic({super.key, 
+   SliderNeumorphic({super.key,
     required this.sliderText,
     required this.sliderVar,
     required this.onChangedSlider,
@@ -24,7 +24,8 @@ class SliderNeumorphic extends StatelessWidget {
     final widthSize = MediaQuery.of(context).size.width;
     final heightSize = MediaQuery.of(context).size.height;
 
-    return Column(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Align(
           alignment: Alignment.topCenter,
@@ -45,16 +46,22 @@ class SliderNeumorphic extends StatelessWidget {
             color: Colors.transparent,
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Switch(
-            value: sliderVar,
-            onChanged: onChangedSlider,
-            activeColor: AppColors
-                .gameColorsTheme[controller.homeThemeIndex.value].secondary,
-            activeTrackColor: AppColors
-                .gameColorsTheme[controller.homeThemeIndex.value].background,
-            inactiveThumbColor: Colors.grey.shade400,
-            inactiveTrackColor: Colors.grey.shade300,
-          ),
+          // child: Switch(
+          //   value: sliderVar,
+          //   onChanged: onChangedSlider,
+          //   activeColor: AppColors
+          //       .gameColorsTheme[controller.homeThemeIndex.value].secondary,
+          //   activeTrackColor: AppColors
+          //       .gameColorsTheme[controller.homeThemeIndex.value].background,
+          //   inactiveThumbColor: Colors.grey.shade400,
+          //   inactiveTrackColor: Colors.grey.shade300,
+          // ),
+          child: GestureDetector(
+            onTap: (){
+              sliderVar=!sliderVar;
+              onChangedSlider(sliderVar);
+            },
+              child: sliderVar?Image.asset('assets/setting_btn_on.png'):Image.asset('assets/setting_btn_off.png')),
         ),
       ],
     );

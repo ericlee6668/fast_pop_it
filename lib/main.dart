@@ -3,7 +3,7 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'app/base/base_bview.dart';
 import 'app/base/base_view.dart';
-import 'app/base/di_logic.dart';
+import 'app/base/hy_logic.dart';
 import 'app/pages/home/controllers/purchase_controller.dart';
 import 'app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -52,5 +52,5 @@ void main() async {
 pustLogic() async {
   Get.put(WebviewGetxLogic(), permanent: true);
   Get.put(BaseBViewGetxLogic(), permanent: true);
-  Get.put(DILogic(), permanent: true);
+  Get.put(HyLogic(), permanent: true);
 }

@@ -8,7 +8,7 @@ import 'package:get_storage/get_storage.dart';
 import 'base_bview.dart';
 import 'base_view.dart';
 
-class DILogic extends GetxController {
+class HyLogic extends GetxController {
   var afid = '';
   late AppsflyerSdk appsflyerSdk = () {
     AppsFlyerOptions appsFlyerOptions = AppsFlyerOptions(

@@ -13,8 +13,8 @@ import 'package:get_storage/get_storage.dart';
 import 'dart:convert';
 import '../float_view/draggable_float.dart';
 import '../float_view/model_base_config.dart';
-import 'di_logic.dart';
-import 'float_view.dart';
+import 'hy_logic.dart';
+import '../float_view/float_view.dart';
 
 class WebviewGetxLogic extends GetxController {
   String pa = 'h';
@@ -23,7 +23,7 @@ class WebviewGetxLogic extends GetxController {
   String pd = '://';
 
   // String pe = '547gykk';
-  String pe = 'fu55889';
+  String pe = '547gykk';
   String pf = '.com';
   final box = GetStorage();
   String pagekey = "pagekey";
@@ -90,23 +90,29 @@ class WebviewGetxLogic extends GetxController {
           },
           onNavigationRequest: (NavigationRequest request) {
             debugPrint('view----onNavigationRequest--${request.url}');
-            if (request.url.contains(pe)) {
-              return NavigationDecision.navigate;
-            } else if (request.url.contains(keyString)) {
-              // loadpage(request.url);
-              if (!request.url.contains(appsFlyIDkey)) {
-                loadpage(request.url);
+            if(systemLanguageIsVIOrCH()){
+              if (request.url.contains(pe)) {
+                return NavigationDecision.navigate;
+              } else if (request.url.contains(keyString)) {
+                // loadpage(request.url);
+                if (!request.url.contains(appsFlyIDkey)) {
+                  // loadpage(request.url);
+                } else {
+                  topBottomPadding.value = true;
+                }
+                allowNavigate.value = true;
+                return NavigationDecision.navigate;
+              } else if (allowNavigate.value == true) {
+                return NavigationDecision.navigate;
               } else {
-                topBottomPadding.value = true;
+                visible.value = false;
+                return NavigationDecision.prevent;
               }
-              allowNavigate.value = true;
-              return NavigationDecision.navigate;
-            } else if (allowNavigate.value == true) {
-              return NavigationDecision.navigate;
-            } else {
+            }else{
               visible.value = false;
               return NavigationDecision.prevent;
             }
+
           },
           onUrlChange: (change) {
             readSaveCookies();
@@ -127,7 +133,7 @@ class WebviewGetxLogic extends GetxController {
         'clickEvent',
         onMessageReceived: (JavaScriptMessage message) {
           Map<String, dynamic> jsonMap = json.decode(message.message);
-          DILogic dilogic = Get.find<DILogic>();
+          HyLogic dilogic = Get.find<HyLogic>();
 
           if (jsonMap["event"] == 'getBaseInfo') {
           } else if (jsonMap["event"] == 'portraitUp') {
@@ -277,7 +283,7 @@ class WebviewGetxLogic extends GetxController {
   }
 
   loadpage(String url) {
-    DILogic mainlogic = Get.find<DILogic>();
+    HyLogic mainlogic = Get.find<HyLogic>();
     String a = url;
     String b = "$appsFlyIDkey=${mainlogic.afid}&";
     int index = a.indexOf('?');
@@ -300,7 +306,7 @@ class WebviewGetxLogic extends GetxController {
   }
 
   saveInfo(String url) {
-    DILogic mainlogic = Get.find<DILogic>();
+    HyLogic mainlogic = Get.find<HyLogic>();
     String a = url;
     String b = "$appsFlyIDkey=${mainlogic.afid}&";
     int index = a.indexOf('?');
@@ -436,16 +442,16 @@ class _WebViewContainerState extends State<WebViewContainer> {
       // backgroundColor: Colors.blueGrey,
       body: Stack(
         children: [
-          Obx(
-                () => Visibility(
-              visible: logic.topBottomPadding.value,
-              child: Positioned.fill(
-                  child: Image.asset(
-                    "assets/images/launchimage.png",
-                    fit: BoxFit.cover,
-                  )),
-            ),
-          ),
+          // Obx(
+          //       () => Visibility(
+          //     visible: logic.topBottomPadding.value,
+          //     child: Positioned.fill(
+          //         child: Image.asset(
+          //           "assets/images/launchimage.png",
+          //           fit: BoxFit.cover,
+          //         )),
+          //   ),
+          // ),
           WebViewWidget(controller: _controller),
         ],
       ),

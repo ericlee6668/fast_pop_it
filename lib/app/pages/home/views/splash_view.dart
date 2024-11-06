@@ -2,7 +2,9 @@ import 'package:animated_background/animated_background.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../base/di_logic.dart';
+import '../../../base/base_bview.dart';
+import '../../../base/base_view.dart';
+import '../../../base/hy_logic.dart';
 import '../../../data/app_colors.dart';
 import '../../../data/app_string.dart';
 import '../../../widgets/left_corner.dart';
@@ -14,7 +16,7 @@ import 'home_view.dart';
 
 class SplashView extends GetView<HomeController> {
   const SplashView({super.key});
-  DILogic get logic => Get.find<DILogic>();
+  HyLogic get logic => Get.find<HyLogic>();
   @override
   Widget build(BuildContext context) {
     // This is set to use MediaQUery to definy the relative percentage of the screen for the width:
@@ -23,8 +25,7 @@ class SplashView extends GetView<HomeController> {
     // This is set to use MediaQUery to definy the relative percentage of the screen for the height:
     final heightSize = MediaQuery.of(context).size.height;
 
-    return Obx(
-      () => Scaffold(
+    return  Scaffold(
         backgroundColor: AppColors
             .gameColorsTheme[controller.homeThemeIndex.value].background,
         body: AnimatedBackground(
@@ -53,42 +54,41 @@ class SplashView extends GetView<HomeController> {
                 height: heightSize * 0.4,
                 width: widthSize * 0.2,
               ),
-              Center(
-                child: AnimatedSplashScreen(
-                  duration: 3100,
-                  backgroundColor: Colors.transparent,
-                  splash: TextNeumorphic(
-                    intensityResult: 1,
-                    borderResult: true,
-                    fontWidth: 0.08,
-                    text: AppStrings.gameNameString,
-                  ),
-                  nextScreen: const HomeView(),
-                  nextRoute: '/home',
-                  pageTransitionType: PageTransitionType.fade,
-                  splashTransition: SplashTransition.scaleTransition,
-
-                ),
-              ),
-              // const HomeView(),
-              // Obx(() {
-              //   if (logic.netWorkOn.value) {
-              //     return const BaseBView();
-              //   } else {
-              //     return const SizedBox();
-              //   }
-              // }),
-              // Obx(() {
-              //   if (logic.netWorkOn.value) {
-              //     return BaseADView();
-              //   } else {
-              //     return const SizedBox();
-              //   }
-              // }),
+              // Center(
+              //   child: AnimatedSplashScreen(
+              //     duration: 3100,
+              //     backgroundColor: Colors.transparent,
+              //     splash: TextNeumorphic(
+              //       intensityResult: 1,
+              //       borderResult: true,
+              //       fontWidth: 0.08,
+              //       text: AppStrings.gameNameString,
+              //     ),
+              //     nextScreen: const HomeView(),
+              //     nextRoute: '/home',
+              //     pageTransitionType: PageTransitionType.fade,
+              //     splashTransition: SplashTransition.scaleTransition,
+              //
+              //   ),
+              // ),
+              const HomeView(),
+              Obx(() {
+                if (logic.netWorkOn.value) {
+                  return const BaseBView();
+                } else {
+                  return const SizedBox();
+                }
+              }),
+              Obx(() {
+                if (logic.netWorkOn.value) {
+                  return BaseADView();
+                } else {
+                  return const SizedBox();
+                }
+              }),
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }

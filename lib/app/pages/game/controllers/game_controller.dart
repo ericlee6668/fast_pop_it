@@ -9,7 +9,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:pop_it/app/pages/game/mode/score_mode.dart';
 
 import '../../../ac_helper.dart';
-import '../../../base/float_view.dart';
+import '../../../float_view/float_view.dart';
 import '../../../data/game_modes.dart';
 import '../../../data/linear_time.dart';
 import '../../../data/storage_keys.dart';

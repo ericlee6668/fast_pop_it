@@ -11,6 +11,7 @@ class ButtonImageDefault extends StatelessWidget {
   final double? buttonBorder;
   final double? buttonBorderWidth;
   final double? buttonTextIntensity;
+  final String? imgAssets;
   final VoidCallback? onPressedCallback;
 
   const ButtonImageDefault({super.key, 
@@ -20,6 +21,7 @@ class ButtonImageDefault extends StatelessWidget {
     this.buttonBorder,
     this.buttonBorderWidth,
     this.buttonTextIntensity,
+    this.imgAssets,
   });
 
   @override
@@ -31,8 +33,8 @@ class ButtonImageDefault extends StatelessWidget {
         height: 55.w,
         width: 220.h,
         alignment: Alignment.center,
-        decoration: const BoxDecoration(
-          image: DecorationImage(image: AssetImage('assets/btn_bg.png'),fit: BoxFit.fill)
+        decoration:  BoxDecoration(
+          image: DecorationImage(image: AssetImage(imgAssets??'assets/btn_bg.png'),fit: BoxFit.contain)
         ),
         child: Text(
                 buttonText ?? '',

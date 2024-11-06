@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 
 import 'package:event_bus/event_bus.dart';
 
-import '../float_view/enum_state_event.dart';
-import 'base_view.dart';
+import 'enum_state_event.dart';
+import '../base/base_view.dart';
 
 EventBus eventBus = EventBus();
 
@@ -181,16 +181,16 @@ class _FloatButtonViewState extends State<FloatButtonView> {
                           child: Image.asset('assets/ic_refresh.png'),
                         ),
                       ),
-                    if (logic.isOpen.value)
-                      GestureDetector(
-                        onTap: () {
-                          changeAction();
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(top:8.0),
-                          child: Image.asset('assets/cache.png'),
-                        ),
-                      ),
+                    // if (logic.isOpen.value)
+                    //   GestureDetector(
+                    //     onTap: () {
+                    //       changeAction();
+                    //     },
+                    //     child: Padding(
+                    //       padding: const EdgeInsets.only(top:8.0),
+                    //       child: Image.asset('assets/cache.png'),
+                    //     ),
+                    //   ),
                   ],
                 ),
               )
