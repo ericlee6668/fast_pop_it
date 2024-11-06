@@ -116,6 +116,7 @@ class _SettingsState extends State<SettingDialog> {
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton<String>(
                         value: _selectedItem,
+                        itemHeight: 80,
                         dropdownColor: AppColors
                             .gameColorsTheme[controller.homeThemeIndex.value]
                             .tertiary,
@@ -165,7 +166,9 @@ class _SettingsState extends State<SettingDialog> {
           buttonTextIntensity: 0.6,
           imgAssets: 'assets/btn_close.png',
           onPressedCallback: () {
-            FlameAudio.play('click_1.mp3');
+            if(SettingEvent.isSong){
+              FlameAudio.play('click_1.mp3');
+            }
             Get.back();
           },
         ));

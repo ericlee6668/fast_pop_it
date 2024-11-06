@@ -20,6 +20,7 @@ import '../controllers/home_controller.dart';
 import '../dialogs/rank_list_dialog.dart';
 import '../dialogs/settings.dart';
 import '../dialogs/shop_new.dart';
+import '../event/event.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
@@ -87,7 +88,9 @@ class HomeView extends GetView<HomeController> {
                 right: 92.w,
                 top: heightSize * 0.06,
                 onTap: () {
-                  FlameAudio.play('click_2.mp3');
+                  if(SettingEvent.isSong){
+                    FlameAudio.play('click_2.mp3');
+                  }
                   Get.dialog(const RankListDialog());
                 },
               ),
@@ -98,7 +101,9 @@ class HomeView extends GetView<HomeController> {
                 right: 50.w,
                 top: heightSize * 0.06,
                 onTap: () {
-                  FlameAudio.play('click_2.mp3');
+                  if(SettingEvent.isSong){
+                    FlameAudio.play('click_2.mp3');
+                  }
                   Get.dialog(
                     const ShopNew(),
                   );
@@ -111,7 +116,9 @@ class HomeView extends GetView<HomeController> {
                 right: 10.w,
                 top: heightSize * 0.06,
                 onTap: () {
-                  FlameAudio.play('click_2.mp3');
+                  if(SettingEvent.isSong){
+                    FlameAudio.play('click_2.mp3');
+                  }
                   Get.dialog(
                     const Dialog(
                       backgroundColor: Colors.transparent,
@@ -166,7 +173,9 @@ class HomeView extends GetView<HomeController> {
                               buttonTextIntensity: 0.6,
                               buttonText: controller.classicName.toString(),
                               onPressedCallback: () {
-                                FlameAudio.play('click_1.mp3');
+                                if(SettingEvent.isSong){
+                                  FlameAudio.play('click_1.mp3');
+                                }
                                 Get.to(() => const GameView(), arguments: {
                                   "mode": GameModes.CLASSIC_MODE
                                 });
@@ -191,7 +200,9 @@ class HomeView extends GetView<HomeController> {
                               buttonTextIntensity: 0.6,
                               buttonText: controller.scoreName.toString(),
                               onPressedCallback: () {
-                                FlameAudio.play('click_1.mp3');
+                                if(SettingEvent.isSong){
+                                  FlameAudio.play('click_1.mp3');
+                                }
                                 Get.to(() => const GameView(),
                                     arguments: {"mode": GameModes.SCORE_MODE});
                               },
@@ -201,7 +212,9 @@ class HomeView extends GetView<HomeController> {
                               buttonTextIntensity: 0.6,
                               buttonText: controller.scoreName.toString(),
                               onPressedCallback: () {
-                                FlameAudio.play('click_1.mp3');
+                                if(SettingEvent.isSong){
+                                  FlameAudio.play('click_1.mp3');
+                                }
                                 Get.to(() => const GameView(),
                                     arguments: {"mode": GameModes.SCORE_MODE});
                               },
@@ -225,7 +238,9 @@ class HomeView extends GetView<HomeController> {
                               buttonTextIntensity: 0.6,
                               buttonText: controller.memoryName.toString(),
                               onPressedCallback: () {
-                                FlameAudio.play('click_1.mp3');
+                                if(SettingEvent.isSong){
+                                  FlameAudio.play('click_1.mp3');
+                                }
                                 Get.to(() => const GameView(),
                                     arguments: {"mode": GameModes.MEMORY_MODE});
                               },
@@ -235,7 +250,9 @@ class HomeView extends GetView<HomeController> {
                               buttonTextIntensity: 0.6,
                               buttonText: controller.memoryName.toString(),
                               onPressedCallback: () {
-                                FlameAudio.play('click_1.mp3');
+                                if(SettingEvent.isSong){
+                                  FlameAudio.play('click_1.mp3');
+                                }
                                 Get.to(() => const GameView(),
                                     arguments: {"mode": GameModes.MEMORY_MODE});
                               },

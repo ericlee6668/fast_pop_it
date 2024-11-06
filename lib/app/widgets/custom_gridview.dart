@@ -49,7 +49,7 @@ class CustomThemeGridView extends StatelessWidget {
             child: ShopItem.shopItems[itemIndex].showView == true
                 ? ShopCard(
                     index: itemIndex,
-                    height: 50.w,
+                    height: 65.w,
                     width: 45.w,
                     cardTextSize: 0.2,
                     iconUrl: ShopItem.shopItems[itemIndex].iconUrl2,

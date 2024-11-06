@@ -123,9 +123,9 @@ class GameController extends GetxController with GetTickerProviderStateMixin {
         _musicPlayer?.pause();
       }
       if (event.song) {
-        FlameAudio.bgm.resume();
+        SettingEvent.isSong =true;
       } else {
-        FlameAudio.bgm.pause();
+        SettingEvent.isSong =false;
       }
     });
   }

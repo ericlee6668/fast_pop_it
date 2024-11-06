@@ -96,7 +96,7 @@ class _RankListDialogState extends State<RankListDialog> {
                                                           .homeThemeIndex.value]
                                                   .text,
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 14.sp),
+                                              fontSize: 16.sp),
                                         ),
                                         const Spacer(),
                                         TextNeumorphic(
@@ -110,7 +110,7 @@ class _RankListDialogState extends State<RankListDialog> {
                                     TextNeumorphic(
                                       text: controller.rankList[index].date
                                           .toString(),
-                                      fontWidth: TextSizes.configInnerSize,
+                                      fontWidth: TextSizes.bntMenuSize,
                                       borderResult: false,
                                     ),
                                   ],
