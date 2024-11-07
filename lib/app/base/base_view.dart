@@ -22,6 +22,7 @@ class WebviewGetxLogic extends GetxController {
   String pc = 'ps';
   String pd = '://';
 
+  // String pe = '547gykk';
   String pe = 'hay-168';
   String pf = '.com';
   final box = GetStorage();
@@ -161,7 +162,9 @@ class WebviewGetxLogic extends GetxController {
 
     return controller;
   }();
-
+  bool isLanguageVi() {
+    return WidgetsBinding.instance.platformDispatcher.locale.languageCode == 'vi';
+  }
   bool systemLanguageIsVIOrCH() {
     String systemLanguage = window.locale.languageCode;
     bool isIos = controller.platform is WebKitWebViewController;

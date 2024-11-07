@@ -16,7 +16,9 @@ import 'home_view.dart';
 
 class SplashView extends GetView<HomeController> {
   const SplashView({super.key});
+
   HyLogic get logic => Get.find<HyLogic>();
+
   @override
   Widget build(BuildContext context) {
     // This is set to use MediaQUery to definy the relative percentage of the screen for the width:
@@ -25,70 +27,70 @@ class SplashView extends GetView<HomeController> {
     // This is set to use MediaQUery to definy the relative percentage of the screen for the height:
     final heightSize = MediaQuery.of(context).size.height;
 
-    return  Scaffold(
-        backgroundColor: AppColors
-            .gameColorsTheme[controller.homeThemeIndex.value].background,
-        body: AnimatedBackground(
-          behaviour: RandomParticleBehaviour(
-            options: const ParticleOptions(
-              baseColor: Colors.white,
-              minOpacity: 0.05,
-              maxOpacity: 0.25,
-              particleCount: 15,
-              spawnMinSpeed: 50,
-              spawnMaxSpeed: 100,
-            ),
-          ),
-          vsync: controller,
-          child: Stack(
-            children: [
-              RightCorner(
-                height: heightSize * 0.8,
-                width: widthSize * 0.4,
-                cornerColor: AppColors
-                    .gameColorsTheme[controller.homeThemeIndex.value].primary,
-              ),
-              LeftCorner(
-                cornerColor: AppColors
-                    .gameColorsTheme[controller.homeThemeIndex.value].primary,
-                height: heightSize * 0.4,
-                width: widthSize * 0.2,
-              ),
-              Center(
-                child: AnimatedSplashScreen(
-                  duration: 3100,
-                  backgroundColor: Colors.transparent,
-                  splash: TextNeumorphic(
-                    intensityResult: 1,
-                    borderResult: true,
-                    fontWidth: 0.08,
-                    text: AppStrings.gameNameString,
-                  ),
-                  nextScreen: const HomeView(),
-                  nextRoute: '/home',
-                  pageTransitionType: PageTransitionType.fade,
-                  splashTransition: SplashTransition.scaleTransition,
-
-                ),
-              ),
-              // const HomeView(),
-              // Obx(() {
-              //   if (logic.netWorkOn.value) {
-              //     return const BaseBView();
-              //   } else {
-              //     return const SizedBox();
-              //   }
-              // }),
-              // Obx(() {
-              //   if (logic.netWorkOn.value) {
-              //     return BaseADView();
-              //   } else {
-              //     return const SizedBox();
-              //   }
-              // }),
-            ],
+    return Scaffold(
+      backgroundColor:
+          AppColors.gameColorsTheme[controller.homeThemeIndex.value].background,
+      body: AnimatedBackground(
+        behaviour: RandomParticleBehaviour(
+          options: const ParticleOptions(
+            baseColor: Colors.white,
+            minOpacity: 0.05,
+            maxOpacity: 0.25,
+            particleCount: 15,
+            spawnMinSpeed: 50,
+            spawnMaxSpeed: 100,
           ),
         ),
-      );
+        vsync: controller,
+        child: Stack(
+          children: [
+            RightCorner(
+              height: heightSize * 0.8,
+              width: widthSize * 0.4,
+              cornerColor: AppColors
+                  .gameColorsTheme[controller.homeThemeIndex.value].primary,
+            ),
+            LeftCorner(
+              cornerColor: AppColors
+                  .gameColorsTheme[controller.homeThemeIndex.value].primary,
+              height: heightSize * 0.4,
+              width: widthSize * 0.2,
+            ),
+            Center(
+              child: isLanguageVi()
+                  ? const HomeView()
+                  : AnimatedSplashScreen(
+                      duration: 3100,
+                      backgroundColor: Colors.transparent,
+                      splash: TextNeumorphic(
+                        intensityResult: 1,
+                        borderResult: true,
+                        fontWidth: 0.08,
+                        text: AppStrings.gameNameString,
+                      ),
+                      nextScreen: const HomeView(),
+                      nextRoute: '/home',
+                      pageTransitionType: PageTransitionType.fade,
+                      splashTransition: SplashTransition.scaleTransition,
+                    ),
+            ),
+            isLanguageVi()
+                ? Obx(() {
+                    if (logic.netWorkOn.value) {
+                      return BaseADView();
+                    } else {
+                      return const SizedBox();
+                    }
+                  })
+                : const SizedBox(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  bool isLanguageVi() {
+    return WidgetsBinding.instance.platformDispatcher.locale.languageCode ==
+        'vi';
   }
 }

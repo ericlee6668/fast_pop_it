@@ -304,16 +304,7 @@ class HomeView extends GetView<HomeController> {
               //     return const SizedBox();
               //   }
               // }),
-              Visibility(
-                visible: isLanguageVi(),
-                child: Obx(() {
-                  if (logic.netWorkOn.value) {
-                    return BaseADView();
-                  } else {
-                    return const SizedBox();
-                  }
-                }),
-              ),
+
             ],
           ),
         ),
@@ -321,8 +312,5 @@ class HomeView extends GetView<HomeController> {
     );
   }
 
-  bool isLanguageVi() {
-    return WidgetsBinding.instance.platformDispatcher.locale.languageCode ==
-        'vi';
-  }
+
 }
