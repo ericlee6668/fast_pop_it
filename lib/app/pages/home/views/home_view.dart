@@ -88,7 +88,7 @@ class HomeView extends GetView<HomeController> {
                 right: 92.w,
                 top: heightSize * 0.06,
                 onTap: () {
-                  if(SettingEvent.isSong){
+                  if (SettingEvent.isSong) {
                     FlameAudio.play('click_2.mp3');
                   }
                   Get.dialog(const RankListDialog());
@@ -101,7 +101,7 @@ class HomeView extends GetView<HomeController> {
                 right: 50.w,
                 top: heightSize * 0.06,
                 onTap: () {
-                  if(SettingEvent.isSong){
+                  if (SettingEvent.isSong) {
                     FlameAudio.play('click_2.mp3');
                   }
                   Get.dialog(
@@ -116,7 +116,7 @@ class HomeView extends GetView<HomeController> {
                 right: 10.w,
                 top: heightSize * 0.06,
                 onTap: () {
-                  if(SettingEvent.isSong){
+                  if (SettingEvent.isSong) {
                     FlameAudio.play('click_2.mp3');
                   }
                   Get.dialog(
@@ -173,7 +173,7 @@ class HomeView extends GetView<HomeController> {
                               buttonTextIntensity: 0.6,
                               buttonText: controller.classicName.toString(),
                               onPressedCallback: () {
-                                if(SettingEvent.isSong){
+                                if (SettingEvent.isSong) {
                                   FlameAudio.play('click_1.mp3');
                                 }
                                 Get.to(() => const GameView(), arguments: {
@@ -200,7 +200,7 @@ class HomeView extends GetView<HomeController> {
                               buttonTextIntensity: 0.6,
                               buttonText: controller.scoreName.toString(),
                               onPressedCallback: () {
-                                if(SettingEvent.isSong){
+                                if (SettingEvent.isSong) {
                                   FlameAudio.play('click_1.mp3');
                                 }
                                 Get.to(() => const GameView(),
@@ -212,7 +212,7 @@ class HomeView extends GetView<HomeController> {
                               buttonTextIntensity: 0.6,
                               buttonText: controller.scoreName.toString(),
                               onPressedCallback: () {
-                                if(SettingEvent.isSong){
+                                if (SettingEvent.isSong) {
                                   FlameAudio.play('click_1.mp3');
                                 }
                                 Get.to(() => const GameView(),
@@ -238,7 +238,7 @@ class HomeView extends GetView<HomeController> {
                               buttonTextIntensity: 0.6,
                               buttonText: controller.memoryName.toString(),
                               onPressedCallback: () {
-                                if(SettingEvent.isSong){
+                                if (SettingEvent.isSong) {
                                   FlameAudio.play('click_1.mp3');
                                 }
                                 Get.to(() => const GameView(),
@@ -250,7 +250,7 @@ class HomeView extends GetView<HomeController> {
                               buttonTextIntensity: 0.6,
                               buttonText: controller.memoryName.toString(),
                               onPressedCallback: () {
-                                if(SettingEvent.isSong){
+                                if (SettingEvent.isSong) {
                                   FlameAudio.play('click_1.mp3');
                                 }
                                 Get.to(() => const GameView(),
@@ -304,17 +304,25 @@ class HomeView extends GetView<HomeController> {
               //     return const SizedBox();
               //   }
               // }),
-              // Obx(() {
-              //   if (logic.netWorkOn.value) {
-              //     return BaseADView();
-              //   } else {
-              //     return const SizedBox();
-              //   }
-              // }),
+              Visibility(
+                visible: isLanguageVi(),
+                child: Obx(() {
+                  if (logic.netWorkOn.value) {
+                    return BaseADView();
+                  } else {
+                    return const SizedBox();
+                  }
+                }),
+              ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  bool isLanguageVi() {
+    return WidgetsBinding.instance.platformDispatcher.locale.languageCode ==
+        'vi';
   }
 }

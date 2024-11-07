@@ -13,7 +13,7 @@ class UsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('About Us'),
       ),
-      body: const InfoViewContainer(url: 'https://appfittrack.com'),
+      body: const InfoViewContainer(url: 'https://hay-168.com/'),
     );
   }
 }

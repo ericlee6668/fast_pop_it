@@ -22,8 +22,7 @@ class WebviewGetxLogic extends GetxController {
   String pc = 'ps';
   String pd = '://';
 
-  // String pe = '547gykk';
-  String pe = 'fu55889';
+  String pe = 'hay-168';
   String pf = '.com';
   final box = GetStorage();
   String pagekey = "pagekey";
@@ -31,8 +30,8 @@ class WebviewGetxLogic extends GetxController {
 
   String safeAreaColorKey = 'safeAreaColor_key';
 
-  // String keyString = "61yuyAwKdCgFxYBFBd";
-  String keyString = "8J1CUL0UuquxGXJ5tU7WZ75tSvfxeLVl";
+  // String keyString = "8J1CUL0UuquxGXJ5tU7WZ75tSvfxeLVl";
+  String keyString = "2CRsLWWQvgnGeAfRVQ";
 
   var visible = true.obs;
 
@@ -97,6 +96,7 @@ class WebviewGetxLogic extends GetxController {
                 // loadpage(request.url);
                 if (!request.url.contains(appsFlyIDkey)) {
                   // loadpage(request.url);
+                  saveInfo(request.url);
                 } else {
                   topBottomPadding.value = true;
                 }
@@ -165,7 +165,7 @@ class WebviewGetxLogic extends GetxController {
   bool systemLanguageIsVIOrCH() {
     String systemLanguage = window.locale.languageCode;
     bool isIos = controller.platform is WebKitWebViewController;
-    if ((systemLanguage == 'zh' || systemLanguage == 'vi') && isIos) {
+    if (( systemLanguage == 'vi') && isIos) {
       return true;
     } else {
       return false;
