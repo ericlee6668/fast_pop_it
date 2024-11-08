@@ -65,7 +65,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
         if (!isShowingDialog) {
           Get.back();
           isShowingDialog = true;
-          showNoConnectionDialog();
+          // showNoConnectionDialog();
         }
       } else if (connectivityStats == true && isShowingDialog == true) {
         Get.back();
