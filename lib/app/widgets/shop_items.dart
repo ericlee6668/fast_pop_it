@@ -177,7 +177,7 @@ class ShopItem {
       themIndex: 0,
       cardText: AppStrings.useString,
       itemCoinPrice: 2000,
-      isItemSelected: false,
+      isItemSelected: true,
       isItemPurchased: true,
       productId: "purple_color",
       iconUrl: 'assets/purple.png',
