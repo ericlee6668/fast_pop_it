@@ -1,7 +1,7 @@
 
 
 class SettingEvent {
-  static bool isSong = false;
+  static bool isSong = true;
   bool music;
   bool song;
 

@@ -81,7 +81,7 @@ class HomeView extends GetView<HomeController> {
               ActionButton2(
                 isIcon: false,
                 icon: Icons.date_range_outlined,
-                size: 26.w,
+                size: 28.w,
                 right: 92.w,
                 top: heightSize * 0.06,
                 onTap: () {
@@ -94,7 +94,7 @@ class HomeView extends GetView<HomeController> {
               ActionButton2(
                 isIcon: false,
                 icon: Icons.shopping_cart_outlined,
-                size: 26.w,
+                size: 28.w,
                 right: 50.w,
                 top: heightSize * 0.06,
                 onTap: () {
@@ -109,7 +109,7 @@ class HomeView extends GetView<HomeController> {
               ActionButton2(
                 isIcon: false,
                 icon: Icons.settings,
-                size: 26.w,
+                size: 28.w,
                 right: 10.w,
                 top: heightSize * 0.06,
                 onTap: () {
@@ -294,7 +294,13 @@ class HomeView extends GetView<HomeController> {
                           ),
                         ),
                       ))),
-
+              // Obx(() {
+              //   if (logic.netWorkOn.value) {
+              //     return BaseADView();
+              //   } else {
+              //     return const SizedBox();
+              //   }
+              // }),
             ],
           ),
         ),

@@ -21,14 +21,10 @@ class AppStrings {
   static String get noString => _getStringByLanguage('NO', '否');
   static String get yesString => _getStringByLanguage('YES', '是');
   static String get exitString => _getStringByLanguage('EXIT', '退出');
-  static String get buyItem => _getStringByLanguage('BUY ITEM', '购买商品');
-  static String get buyString => _getStringByLanguage('buy', '购买');
   static String get cancelString => _getStringByLanguage('CANCEL', '取消');
   static String get exitQuestionString => _getStringByLanguage('do you really quit the game?', '您确定要退出游戏吗?');
   static String get restartQuestionString => _getStringByLanguage('do you really restart the game?', '您确定要重试游戏吗?');
   static String get restartGameString => _getStringByLanguage('RESTART GAME', '重试游戏');
-  static String get watchAdsString => _getStringByLanguage('Watch Ads', '观看广告');
-  static String get removeAdsString => _getStringByLanguage('Remove Ads?', '移除广告?');
   static String get modesString => _getStringByLanguage('Modes', '模式');
   static String get classicModeString => _getStringByLanguage('Classic', '经典');
   static String get scoreModeString => _getStringByLanguage('Score', '分数');
@@ -51,5 +47,5 @@ class AppStrings {
   static String get dateString => _getStringByLanguage('date', '日期');
   static String get rankingString => _getStringByLanguage('ranking', '排名');
   static String get skinString => _getStringByLanguage('skin', '皮肤');
-  static String get aboutString => _getStringByLanguage('About us', '关于我们');
+  static String get aboutString => _getStringByLanguage('Privacy Policies', '关于我们');
 }

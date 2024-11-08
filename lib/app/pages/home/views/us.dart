@@ -26,7 +26,6 @@ class UsPage extends StatelessWidget {
 
     <meta name="robots" content="noindex" />
 
-    <meta property="og:title" content="Privacy Policy for Hay88 Pop it - PrivacyPolicies.com" />
     <meta property="og:image" content="https://www.privacypolicies.com/public/images/meta_og_image_livelink.png" />
     <meta property="og:image:width" content="1280" />
     <meta property="og:image:height" content="720" />
@@ -51,7 +50,7 @@ class UsPage extends StatelessWidget {
 
     <div class="header">
         <div class="container">
-            <p class="title">Privacy Policy for Hay88 Pop it</p>
+            <p class="title">Privacy Policy for Pop it Hay88</p>
         </div>
     </div>
 
@@ -63,7 +62,7 @@ class UsPage extends StatelessWidget {
             
             <div class="tab-content translations-content-item en visible" id="en">
                 <h1>Privacy Policy</h1>
-<p>Last updated: November 06, 2024</p>
+
 <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
 <p>We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy. This Privacy Policy has been created with the help of the <a href="https://www.privacypolicies.com/privacy-policy-generator/" target="_blank">Privacy Policy Generator</a>.</p>
 <h2>Interpretation and Definitions</h2>
@@ -196,7 +195,7 @@ class UsPage extends StatelessWidget {
 <h2>Contact Us</h2>
 <p>If you have any questions about this Privacy Policy, You can contact us:</p>
 <ul>
-<li>By email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="671f0e06080d5554565627000a060e0b4904080a">[email&#160;protected]</a></li>
+<li>By email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="671f0e06080d5554565627000a060e0b4904080a">[chloensan@gmx.com]</a></li>
 </ul>
             </div>
             
@@ -207,11 +206,7 @@ class UsPage extends StatelessWidget {
 
     
     
-    <div class="footer">
-        <div class="container">
-          <p>Generated using <a href="https://www.privacypolicies.com/privacy-policy-generator/" target="_blank">Privacy Policies Generator</a></p>
-        </div>
-    </div>
+    
     
 
 </div>

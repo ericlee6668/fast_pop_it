@@ -26,12 +26,12 @@ class _ShopState extends State<ShopNew> {
 
     return Stack(
       children: [
-        Align(
-            alignment: Alignment.topCenter,
-            child: Image.asset(
-              'assets/dialog_title_shop.png',
-              height: 55.w,
-            )),
+        // Align(
+        //     alignment: Alignment.topCenter,
+        //     child: Image.asset(
+        //       'assets/dialog_title_shop.png',
+        //       height: 55.w,
+        //     )),
         Center(
           child: Container(
             width: Get.width * 0.8,

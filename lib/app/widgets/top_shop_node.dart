@@ -10,7 +10,6 @@ import '../pages/home/controllers/home_controller.dart';
 class TopShopNode extends StatelessWidget {
   final int? currencyValue;
   final String currencyIcon;
-  final String addButton = AssetStrings.buyCurrencyImage;
 
   const TopShopNode({super.key, 
     required this.currencyIcon,
