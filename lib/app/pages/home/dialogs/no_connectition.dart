@@ -53,13 +53,13 @@ class _ConnectionState extends State<Connection> {
           child: Column(
             children: [
               const Spacer(),
-              SizedBox(
-                height: heightSize * 0.4 * 0.5,
-                width: widthSize * 0.4 * 0.5,
-                child: Image.asset(
-                  AssetStrings.noConnectionImage,
-                ),
-              ),
+              // SizedBox(
+              //   height: heightSize * 0.4 * 0.5,
+              //   width: widthSize * 0.4 * 0.5,
+              //   child: Image.asset(
+              //     AssetStrings.noConnectionImage,
+              //   ),
+              // ),
               const Spacer(),
               ButtonNeumorphic(
                 width: 0.20,
