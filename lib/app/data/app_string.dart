@@ -14,9 +14,6 @@ class AppStrings {
   }
 
   static String get playAgainsString => _getStringByLanguage('PLAY AGAIN', '重玩');
-  static String get itemBoughtString => _getStringByLanguage('PURCHASED SUCESSFULLY!', '购买成功!');
-  static String get itemBoughtPendingString=> _getStringByLanguage('YOUR PURCHASE IS PENDING!', '正在购买中!');
-  static String get itemBoughtErrorString => _getStringByLanguage('PURCHASE ERROR', '购买错误');
   static String get homeString => _getStringByLanguage('HOME', '首页');
   static String get noString => _getStringByLanguage('NO', '否');
   static String get yesString => _getStringByLanguage('YES', '是');
@@ -41,8 +38,7 @@ class AppStrings {
   static String get scoreString => _getStringByLanguage('score', '分数');
   static String get useString => _getStringByLanguage('use', '使用');
   static String get usingString => _getStringByLanguage('using', '使用中');
-  static String get buyNoticeString => _getStringByLanguage('Insufficient balance', '余额不足');
-  static String get buyCoinNENString => _getStringByLanguage('You do not have enough coins to Buy this item.', '您没有足够的金币来购买该物品。');
+  static String get buyCoinNENString => _getStringByLanguage('You do not have enough points to get this item.', '您没有足够的金币来购买该物品。');
   static String get rankString => _getStringByLanguage('rank', '排行榜');
   static String get dateString => _getStringByLanguage('date', '日期');
   static String get rankingString => _getStringByLanguage('ranking', '排名');
