@@ -5,8 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pop_it/app/pages/home/dialogs/setting_dialog.dart';
 import 'package:pop_it/app/pages/home/views/us.dart';
-import '../../../base/base_bview.dart';
-import '../../../base/base_view.dart';
 import '../../../base/hy_logic.dart';
 import '../../../data/app_colors.dart';
 import '../../../data/app_sizes.dart';
@@ -18,7 +16,6 @@ import '../../game/views/game_view.dart';
 import '../../game/widgets/action_button2.dart';
 import '../controllers/home_controller.dart';
 import '../dialogs/rank_list_dialog.dart';
-import '../dialogs/settings.dart';
 import '../dialogs/shop_new.dart';
 import '../event/event.dart';
 
@@ -297,20 +294,7 @@ class HomeView extends GetView<HomeController> {
                           ),
                         ),
                       ))),
-              // Obx(() {
-              //   if (logic.netWorkOn.value) {
-              //     return const BaseBView();
-              //   } else {
-              //     return const SizedBox();
-              //   }
-              // }),
-              Obx(() {
-                if (logic.netWorkOn.value) {
-                  return BaseADView();
-                } else {
-                  return const SizedBox();
-                }
-              }),
+
             ],
           ),
         ),

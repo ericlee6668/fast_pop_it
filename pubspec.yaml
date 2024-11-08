@@ -61,10 +61,11 @@ dependencies:
 #  firebase_analytics: ^11.3.0
   appsflyer_sdk: ^6.12.2
   url_launcher: ^6.2.5
-  webview_flutter: ^4.0.7
-  webview_cookie_manager: ^2.0.6
+#  webview_flutter: ^4.0.7
+#  webview_cookie_manager: ^2.0.6
   flutter_screenutil: ^5.9.3
   confetti: ^0.8.0
+  flutter_html: ^3.0.0-beta.2
 
 dev_dependencies:
   flutter_test:

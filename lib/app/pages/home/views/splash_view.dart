@@ -2,8 +2,6 @@ import 'package:animated_background/animated_background.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../base/base_bview.dart';
-import '../../../base/base_view.dart';
 import '../../../base/hy_logic.dart';
 import '../../../data/app_colors.dart';
 import '../../../data/app_string.dart';

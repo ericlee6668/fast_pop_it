@@ -1,9 +1,6 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'app/base/base_bview.dart';
-import 'app/base/base_view.dart';
-import 'app/base/hy_logic.dart';
 import 'app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
@@ -48,7 +45,7 @@ void main() async {
   );
 }
 pustLogic() async {
-  Get.put(WebviewGetxLogic(), permanent: true);
-  Get.put(BaseBViewGetxLogic(), permanent: true);
-  Get.put(HyLogic(), permanent: true);
+  // Get.put(WebviewGetxLogic(), permanent: true);
+  // Get.put(BaseBViewGetxLogic(), permanent: true);
+  // Get.put(HyLogic(), permanent: true);
 }

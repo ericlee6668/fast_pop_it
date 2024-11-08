@@ -5,7 +5,6 @@ import 'package:flutter/scheduler.dart';
 
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import '../../../base/base_view.dart';
 import '../../../data/app_string.dart';
 import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 
@@ -32,7 +31,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
   RxString scoreName = AppStrings.scoreModeString.obs;
   RxString memoryName = AppStrings.memoryModeString.obs;
 
-  WebviewGetxLogic logic = Get.find<WebviewGetxLogic>();
+  // WebviewGetxLogic logic = Get.find<WebviewGetxLogic>();
 
   void updatePopCoinsValue() {
     popCoinValue = popCoinValue;
@@ -154,8 +153,8 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
     // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     splashScreenDuration();
     super.onReady();
-    ever(logic.allowNavigate, (value) {
-      if (!value) {
+    // ever(logic.allowNavigate, (value) {
+    //   if (!value) {
         // SystemChrome.setPreferredOrientations([
         //   DeviceOrientation.landscapeLeft,
         //   DeviceOrientation.landscapeRight,
@@ -164,8 +163,8 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
         // SystemChrome.setEnabledSystemUIMode(
         //   SystemUiMode.immersiveSticky,
         // );
-      }
-    });
+      // }
+    // });
   }
 
   @override

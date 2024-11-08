@@ -1,12 +1,12 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:event_bus/event_bus.dart';
 
 import 'enum_state_event.dart';
-import '../base/base_view.dart';
 
 EventBus eventBus = EventBus();
 
@@ -65,46 +65,45 @@ class _FloatButtonViewState extends State<FloatButtonView> {
     eventStreamController = widget.eventStreamController;
   }
   void homeAction() {
-    if (Get.isRegistered<WebviewGetxLogic>()) {
-      WebviewGetxLogic logic = Get.find<WebviewGetxLogic>();
-      logic.loadHomePage();
-
-      // eventBus.fire(HomeEvent());
-    }
+    // if (Get.isRegistered<WebviewGetxLogic>()) {
+    //   WebviewGetxLogic logic = Get.find<WebviewGetxLogic>();
+    //   logic.loadHomePage();
+    //
+    //   // eventBus.fire(HomeEvent());
+    // }
   }
 
   void backAction() {
-    if (Get.isRegistered<WebviewGetxLogic>()) {
-      WebviewGetxLogic logic = Get.find<WebviewGetxLogic>();
-      logic.controller.goBack();
-      // eventBus.fire(RefreshEvent());
-
-    }
+    // if (Get.isRegistered<WebviewGetxLogic>()) {
+    //   WebviewGetxLogic logic = Get.find<WebviewGetxLogic>();
+    //   logic.controller.goBack();
+    //   // eventBus.fire(RefreshEvent());
+    // }
   }
 
   void cleanAction(){
-    if (Get.isRegistered<WebviewGetxLogic>()) {
-      WebviewGetxLogic logic = Get.find<WebviewGetxLogic>();
-
-      logic.cleanCookies();
-      // logic.loadHomePage();
-      logic.loadHomePage();
-      // eventBus.fire(RefreshEvent());
-
-    }
+    // if (Get.isRegistered<WebviewGetxLogic>()) {
+    //   WebviewGetxLogic logic = Get.find<WebviewGetxLogic>();
+    //
+    //   logic.cleanCookies();
+    //   // logic.loadHomePage();
+    //   logic.loadHomePage();
+    //   // eventBus.fire(RefreshEvent());
+    //
+    // }
   }
 
   void refreshAction() {
-    if (Get.isRegistered<WebviewGetxLogic>()) {
-      WebviewGetxLogic logic = Get.find<WebviewGetxLogic>();
-      logic.controller.reload();
-      // eventBus.fire(RefreshEvent());
-    }
+    // if (Get.isRegistered<WebviewGetxLogic>()) {
+    //   WebviewGetxLogic logic = Get.find<WebviewGetxLogic>();
+    //   logic.controller.reload();
+    //   // eventBus.fire(RefreshEvent());
+    // }
   }
   void changeAction() {
-    if (Get.isRegistered<WebviewGetxLogic>()) {
-      eventBus.fire(ChangeEvent());
-    }
+    // if (Get.isRegistered<WebviewGetxLogic>()) {
+    //   eventBus.fire(ChangeEvent());
+    // }
   }
 
   @override
@@ -161,36 +160,25 @@ class _FloatButtonViewState extends State<FloatButtonView> {
                   children: [
                     if (logic.isOpen.value)
                       GestureDetector(
-                        onTap: () {
-                          homeAction();
-                          logic.width.value = 26;
-                        },
-                        child:  Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
-                          child: Image.asset('assets/ic_home.png'),
-                        ),
-                      ),
+                          onTap: () {
+                            homeAction();
+                          },
+                          child: const Icon(Icons.home_filled,size: 30,)),
+
                     if (logic.isOpen.value)
                       GestureDetector(
                         onTap: () {
                           refreshAction();
-                          logic.width.value = 26;
                         },
-                        child: Padding(
-                          padding: const EdgeInsets.only(top:8.0),
-                          child: Image.asset('assets/ic_refresh.png'),
-                        ),
+                        child: const Icon(Icons.refresh,size: 30,),
                       ),
-                    // if (logic.isOpen.value)
-                    //   GestureDetector(
-                    //     onTap: () {
-                    //       changeAction();
-                    //     },
-                    //     child: Padding(
-                    //       padding: const EdgeInsets.only(top:8.0),
-                    //       child: Image.asset('assets/cache.png'),
-                    //     ),
-                    //   ),
+                    if (logic.isOpen.value)
+                      GestureDetector(
+                        onTap: () {
+                          changeAction();
+                        },
+                        child: const Icon(Icons.cleaning_services_rounded,size: 30,),
+                      ),
                   ],
                 ),
               )

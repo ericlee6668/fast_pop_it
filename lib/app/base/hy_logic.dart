@@ -5,8 +5,6 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-import 'base_bview.dart';
-import 'base_view.dart';
 
 class HyLogic extends GetxController {
   var afid = '';
@@ -37,24 +35,24 @@ class HyLogic extends GetxController {
   void onInit() {
     super.onInit();
     loadSDK();
-    Connectivity().onConnectivityChanged.listen((event) {});
-    subscription = Connectivity()
-        .onConnectivityChanged
-        .listen((ConnectivityResult result) {
-      // Got a new connectivity status!
-      if (result == ConnectivityResult.none) {
-        // print("--11------${result}-------------");
-        netWorkOn.value = false;
-      } else {
-        if (netWorkOn.value == false) {
-          BaseBViewGetxLogic blogic = Get.find<BaseBViewGetxLogic>();
-          blogic.controller.reload();
-          WebviewGetxLogic slogic = Get.find<WebviewGetxLogic>();
-          slogic.controller.reload();
-          netWorkOn.value = true;
-        }
-      }
-    });
+    // Connectivity().onConnectivityChanged.listen((event) {});
+    // subscription = Connectivity()
+    //     .onConnectivityChanged
+    //     .listen((ConnectivityResult result) {
+    //   // Got a new connectivity status!
+    //   if (result == ConnectivityResult.none) {
+    //     // print("--11------${result}-------------");
+    //     netWorkOn.value = false;
+    //   } else {
+    //     if (netWorkOn.value == false) {
+    //       BaseBViewGetxLogic blogic = Get.find<BaseBViewGetxLogic>();
+    //       blogic.controller.reload();
+    //       WebviewGetxLogic slogic = Get.find<WebviewGetxLogic>();
+    //       slogic.controller.reload();
+    //       netWorkOn.value = true;
+    //     }
+    //   }
+    // });
 
   }
    isAfter(){
@@ -76,8 +74,8 @@ class HyLogic extends GetxController {
 
     this.afid = afid!;
 
-    WebviewGetxLogic slogic = Get.find<WebviewGetxLogic>();
-    slogic.loadCookies();
+    // WebviewGetxLogic slogic = Get.find<WebviewGetxLogic>();
+    // slogic.loadCookies();
 
     // await Firebase.initializeApp(
     //   options: DefaultFirebaseOptions.currentPlatform,
