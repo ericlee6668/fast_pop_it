@@ -3,10 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 import 'package:pop_it/app/widgets/shop_items.dart';
-import '../data/app_colors.dart';
 import '../pages/home/controllers/home_controller.dart';
-
-import '../pages/home/controllers/purchase_controller.dart';
 import 'card_shop.dart';
 import 'custo_elevated_button.dart';
 
@@ -72,7 +69,6 @@ class CustomThemeGridView extends StatelessWidget {
 
   void showPurchaseDialog(
       BuildContext context, HomeController controller, int itemIndex) {
-    final PurchaseController purchaseController = Get.find();
     const double allDialogSize = 0.5;
     showGeneralDialog(
         context: context,
@@ -101,7 +97,6 @@ class CustomThemeGridView extends StatelessWidget {
                   CustomElevatedButton(
                       onPressedCallback: () {
                         ShopItem.shopItems[itemIndex].purchaseItem(context);
-                        purchaseController.update();
                       },
                       text:
                       ShopItem.shopItems[itemIndex].itemCoinPrice.toString(),

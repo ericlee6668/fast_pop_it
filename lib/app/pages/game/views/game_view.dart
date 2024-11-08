@@ -1,4 +1,5 @@
 import 'package:animated_background/animated_background.dart';
+import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -86,13 +87,25 @@ class GameView extends GetView<GameController> {
               GameOver(),
               RestartGame(),
               GoBackHome(),
+              // Positioned(
+              //   left: 52.w,
+              //   top: 250.w,
+              //   child: ExplosionWidget(
+              //     canTap: true,
+              //     child: Container(
+              //         width: 220, height: 220, color: Colors.transparent),
+              //   ),
+              // ),
               Positioned(
-                right: 150,
-                top: 280,
-                child: ExplosionWidget(
-                  canTap: true,
-                  child: Container(
-                      width: 220, height: 220, color: Colors.transparent),
+                left: 182.w,
+                top: 250.w,
+                child: ConfettiWidget(
+                  numberOfParticles: 30,
+                  minBlastForce: 10,
+                  maxBlastForce: 20,
+                  blastDirectionality: BlastDirectionality.explosive,
+                  confettiController: controller.confettiController,
+                  gravity: 0.7,
                 ),
               ),
               ActionButton(

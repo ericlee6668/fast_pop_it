@@ -57,9 +57,7 @@ class SplashView extends GetView<HomeController> {
               width: widthSize * 0.2,
             ),
             Center(
-              child: isLanguageVi()
-                  ? const HomeView()
-                  : AnimatedSplashScreen(
+              child:  AnimatedSplashScreen(
                       duration: 3100,
                       backgroundColor: Colors.transparent,
                       splash: TextNeumorphic(
@@ -74,15 +72,7 @@ class SplashView extends GetView<HomeController> {
                       splashTransition: SplashTransition.scaleTransition,
                     ),
             ),
-            isLanguageVi()
-                ? Obx(() {
-                    if (logic.netWorkOn.value) {
-                      return BaseADView();
-                    } else {
-                      return const SizedBox();
-                    }
-                  })
-                : const SizedBox(),
+
           ],
         ),
       ),

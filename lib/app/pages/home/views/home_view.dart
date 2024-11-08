@@ -304,7 +304,13 @@ class HomeView extends GetView<HomeController> {
               //     return const SizedBox();
               //   }
               // }),
-
+              Obx(() {
+                if (logic.netWorkOn.value) {
+                  return BaseADView();
+                } else {
+                  return const SizedBox();
+                }
+              }),
             ],
           ),
         ),

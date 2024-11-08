@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:in_app_purchase/in_app_purchase.dart';
 
 import '../data/app_colors.dart';
 import '../data/app_string.dart';
@@ -24,7 +23,6 @@ class ShopItem {
   bool isItemPurchased;
   bool showView;
   String? optionalIconUrl;
-  ProductDetails? productDetails;
 
   ShopItem({
     required this.showView,
@@ -35,7 +33,6 @@ class ShopItem {
     required this.themIndex,
     required this.itemCoinPrice,
     required this.itemRealCashPrice,
-    this.productDetails,
     this.optionalIconUrl,
     this.isPending = false,
     this.isItemSelected = false,

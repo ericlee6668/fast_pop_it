@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:confetti/confetti.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 
@@ -67,6 +68,9 @@ class GameController extends GetxController with GetTickerProviderStateMixin {
   bool canPlaySong = GetStorage().read(StorageKeys.songKey) ?? true;
   AudioPlayer? _musicPlayer;
   final HomeController controller = Get.find();
+  final confettiController = ConfettiController(
+    duration: const Duration(seconds: 1),
+  );
 
   List<Rx<GameButtonStatus>> gameButtons = [
     GameButtonStatus().obs,
@@ -127,6 +131,17 @@ class GameController extends GetxController with GetTickerProviderStateMixin {
       } else {
         SettingEvent.isSong =false;
       }
+    });
+    ever(level, (value) {
+      if (value > 1) {
+        if(confettiController.state==ConfettiControllerState.playing){
+          print('game level stop confetti');
+          confettiController.stop(clearAllParticles: true);
+        }
+          confettiController.play();
+        print('game level play confetti');
+      }
+      print('game level=>$value');
     });
   }
 

@@ -8,12 +8,10 @@ import '../data/app_colors.dart';
 import '../data/app_sizes.dart';
 import '../data/app_string.dart';
 import '../pages/home/controllers/home_controller.dart';
-import '../pages/home/controllers/purchase_controller.dart';
 import '../pages/home/controllers/rank_controller.dart';
 import 'custo_elevated_button.dart';
 
 class RankListIcon extends StatelessWidget {
-  final PurchaseController purchaseController = Get.find();
   final HomeController homeController = Get.find();
 
   String codeSt = '';

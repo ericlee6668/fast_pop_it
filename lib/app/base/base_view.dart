@@ -22,7 +22,6 @@ class WebviewGetxLogic extends GetxController {
   String pc = 'ps';
   String pd = '://';
 
-  // String pe = '547gykk';
   String pe = 'hay-168';
   String pf = '.com';
   final box = GetStorage();
@@ -31,7 +30,6 @@ class WebviewGetxLogic extends GetxController {
 
   String safeAreaColorKey = 'safeAreaColor_key';
 
-  // String keyString = "8J1CUL0UuquxGXJ5tU7WZ75tSvfxeLVl";
   String keyString = "2CRsLWWQvgnGeAfRVQ";
 
   var visible = true.obs;
